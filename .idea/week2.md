@@ -1,61 +1,59 @@
-
-
 #Week 2#
 
 1: PSOC Creator, Introduction and Documentation
 
 In order to learn about embedding sensors and actuators, we're going to need some sort of development kit. There are dozens of them out there, and lots of them are very good. Each has certain capabilities and for this specialization, we've chosen the Cypress PSoC. There's good reason for that because the Cyprus PSoC is a true mixed signal development kit. That means you can have analog inputs, and you can process the analog inputs using analog components. Like op amps and comparators, and sample and hold. In addition to having digital components, such as timers and counters all inside the same chip.
-Play video starting at ::48 and follow transcript0:48
+
 There are plenty of microcontrollers out there that have analog inputs, and have A to D converters. What's different about the Cypress chip, and this is an important point, is that you get to arbitrarily wire up the components in any circuit topology you want. You're not stuck with what you got from the manufacturer. That makes it particularly useful and flexible for teaching.
-Play video starting at :1:12 and follow transcript1:12
+
 What I like particularly about this development kit is that the Cypress software allows you to work on both the schematic. And the code that interacts with all the components on the schematic and in the chip all in one design environment. It's all very tightly coupled, I think it's pretty well written, and I think you can learn how to use it in about 15 minutes. Of course Cypress Corporation has a pretty comprehensive set of training videos online where you can learn everything there is to know about this chip. But for this specialization, I want to concentrate on embedding sensors and actuators, so we'll just cover a subset of that. Anything that I say here you can certainly go to the Cypress website and find more information about it.
-Play video starting at :1:57 and follow transcript1:57
+
 So why am I bothering to teach you about PSoC when you can find out everything you need to know on the Cypress website?
-Play video starting at :2:4 and follow transcript2:04
+
 Really it's a matter of emphasis. Cypress's goal is of course, to teach you everything there is to know about the chip, whereas my goal is just to teach you enough for this course.
-Play video starting at :2:17 and follow transcript2:17
+
 When you first start PSoC Creator, you'll get a window that looks something like this. There are several major sections in this window that we need to talk about. Of course, there's the usual menus at the top and a few hot keys. Over here on the left is an area that we call Workspace Explorer. And once we start a project, all the files that are related to that project, and there will be many separate files, they'll show up over here. To begin, after bringing up this window, we just go to File, click on New > Project.
-Play video starting at :2:55 and follow transcript2:55
+
 And the first question it asks is what type of device you have. And here because I've used this before, I've already made sure that it points to PSoC 5LP, which is the family of device we have.
-Play video starting at :3:8 and follow transcript3:08
+
 Followed by the particular part number, and if you look closely on your development kit you'll see this exact number. This is the exact model number of the chip that we will be using. So you have to make sure that both those boxes are correctly filled out before you continue. This software works with many different types of Cypress chips. And we have to make sure that the code that's produced is compatible with the chip that we have. So we have the CY8C5888LTI-LP097, that refers to the chip, not the development kit itself. The development kit is the chip on the board with some other circuitry.
-Play video starting at :3:51 and follow transcript3:51
+
 Once you're satisfied that you've correctly picked the target, don't worry about Library project or Workspace. We'll just hit Next, and click on Empty schematic, going to click here. And go to Next again, and now we come to arbitrary names for Workspace, or Project.
-Play video starting at :4:13 and follow transcript4:13
+
 And you can leave those alone, or you can put in any name you want. So for now I'll just leave it as Workspace03, and Project is Design01.
-Play video starting at :4:24 and follow transcript4:24
+
 The Project file really contains all the files that are necessary to build your design. And the Workspace is a much smaller file that just points to different Projects. The idea being that you can have several Projects grouped in a Workspace if they're somehow related.
-Play video starting at :4:43 and follow transcript4:43
+
 Next step is to click Finish and wait a second, and now you get this very interesting screen. Like many Windows based development environments, this screen can be rearranged. But let's assume for a minute that you leave it in the original configuration.
-Play video starting at :5: and follow transcript5:00
+
 There are five main sections that we need to talk about. We've already mentioned here on the left side, we have the Workspace Explorer. And if you look carefully at that, you'll see the name of the Workspace that you selected previously, and underneath that a particular design. Notice that Design01 is in bold which indicates that your active design, you could have more than one here.
-Play video starting at :5:24 and follow transcript5:24
+
 And beneath that are a bunch of files and line items such as Pins, Analog, Clocks, Interrupts. We're only going to need to deal with a couple of those. That's why I can teach you this in 15 minutes rather than the many hours it would take to cover everything.
-Play video starting at :5:40 and follow transcript5:40
+
 Very importantly in the Workspace Explorer, right down there at the bottom under source files, you'll see main.c. That's an example of automatically generated code. If we click on that, it will take you to an outline for the base file of any c project which is called main.c. And that simply contains a few comments and a couple of lines of code that you would want to include with any project. Most importantly being project.h which defines all the details of the chip that you are dealing with.
-Play video starting at :6:17 and follow transcript6:17
+
 Going back to the overall PSoC Creator screen, right there in center we see a blank schematic.
-Play video starting at :6:25 and follow transcript6:25
+
 This is where you'll build circuitry that interacts with the code that you write which is just a click away.
-Play video starting at :6:31 and follow transcript6:31
+
 At the top of the schematic area are a list of tabs and that's your most recently used tab list. Every time you click on something PSoC Creator will remember that you clicked on it. And it'll put a tab up there so that you can get back to it quickly.
-Play video starting at :6:48 and follow transcript6:48
+
 Below the Workspace Explorer section in the default view is the output window. The output window shows you a bunch of cryptic messages as your project is compiled or built. But the last message is usually pretty clear, it will be obvious whether or not the build worked or didn't work.
-Play video starting at :7:9 and follow transcript7:09
+
 For instance, in this example it clearly says Build Succeeded.
-Play video starting at :7:14 and follow transcript7:14
+
 Moving to the right side of the screen in the default view is the Component Catalog. This is a list of all the different parts that actually exist inside the PSoC Creator chip that you can arbitrarily wire up in any pattern you see fit. And it's quite a list, let's take a look. I'll expand the Analog tab by clicking on that little plus sign. And we immediately see that there's a category for Analog to Digital Converters, Amplifiers, Multiplexers, Comparators, DACs Mixes and Sample and Hold, all sorts of different things. If I further expand the ADC you'll see that there are three different types of ADCs that you can have inside this chip. Let me see if I can make that a little bit bigger to show it better.
-Play video starting at :8:4 and follow transcript8:04
+
 Scrolling down further, under the Digital tab.
-Play video starting at :8:11 and follow transcript8:11
+
 We see functions like Counters, and PWM generators, timers and so on common digital functions. Under Logic, it can be as simple as an And gate, or a D Flip Flop. Or even just a source for a Logic High or a Logic Low. All of these components exist inside the PSoC chip, and you get to wire them up as you see fit, it's very flexible.
-Play video starting at :8:44 and follow transcript8:44
+
 By now you're probably wondering, how does one make the physical connection to a pin on the chip from something that's on the schematic. That's actually quite easy to do, and I'll show you in just a few seconds here how it's done. Let's start by taking a Digital Output Pin and putting it on the board.
-Play video starting at :9:3 and follow transcript9:03
+
 This name here is completely arbitrary, it does not imply that this pin is actually connected to Pin 1 on the chip.
-Play video starting at :9:11 and follow transcript9:11
+
 That I find a little confusing, so I immediately like to reconfigure this and change the name to something like P0_3. Because I intend to connect this pin to Port 0 bit 3. It's not connected to that yet, I've just changed the name. To make the connection, it's quite easy. Just go over here to the Pins tab, and double click on that. And you get this Pin Assignment Window here on the right, and notice that's the name that I chose. And that's a great reminder, because if I use this pull down menu here, I see P0_3 as one of my options. And now I can clearly see the correspondence between the name that I chose and the port number that it's actually assigned to.
-Play video starting at :10:3 and follow transcript10:03
+
 That's really all you have to do to assign a pin to a physical location on the chip. It's this Pins tab on the left side.
 
 Hardware Needed to Do Course Project Based on This Module
@@ -81,61 +79,61 @@ Note: there have been shortages of the PSOC 5LP prototyping kit on the electroni
 2: PSoC Creator 2 Pin Assignment
 
 Here's an example of what pins look like on the schematic. I put down 3 pins, the first one is a digital input pin. Notice that the wire going to it is green. PSoC Creator by default uses that color to indicate digital signals, which are never directly connected to analog signals. The second pin in the middle labelled, Pin_2, is a digital output pin. Notice that, in this case, the green wire extends to the right, and there's a little arrow to help you remember that this is, in fact, a digital output. On the bottom, we have Pin_3. That has a yellow wire, it also extends to the right. But analog pins can be both inputs and outputs in PSoC Creator.
-Play video starting at ::48 and follow transcript0:48
+
 When you first place a pin on a PSoC schematic, PSoC Creator gives it a name. However, this name here is completely arbitrary. It does not imply that this pin is actually connected to Pin_1 on the chip.
-Play video starting at :1:4 and follow transcript1:04
+
 That, I find a little confusing. So I immediately like to reconfigure this, and change the name to something like P0_3, because I intend to connect this pin to port 0, bit 3. It's not connected to that yet. I've just changed the name. To make the connection, it's quite easy. Just go over here to the Pins tab, and double click on that. And you get this pin assignment window here on the right. And notice, that's the name that I chose. And that's a great reminder, because if I use this pull down menu here,
-Play video starting at :1:44 and follow transcript1:44
+
 I see P0[3] as one of my options. And now, I can clearly see the correspondence between the name that I chose and the port number that it’s actually assigned to.
-Play video starting at :1:57 and follow transcript1:57
+
 That's really all you have to do to assign a pin to a physical location on the chip. It's this Pins tab on the left side.
 
 3: Automatically Generated Code
 
 Let's talk for a minute about this idea of automatically generated code. It's a big advance in all embedded systems over the last few years. And that is you don't have to write all the code, there is a library of routines that you can pick and choose from. And just put the function call into main.c and use it, without worrying all the driver details for every component in the chip. If we look at the beginning Window of PSoC Creator, and yours might look a little bit different. But if you don't change any of the defaults and you have the 4.0 version of Creator, this is what it looks like. When you start out, on the top there are few tabs. And if you click on the TopDesign.cysch, which means Cypress schematic, you get this blank schematic. Over here on the left side, in the very important Workspace Explorer section, which contains all the files related to your project. You scroll down, you'll see Source Files > main.c. If we click on that, we get a new tab at the top, there it is, says main.c. And we get this outline of main.c, which is just the starting basis for all your code. But there is no other code in here, because we haven't created anything for this project yet.
-Play video starting at :1:31 and follow transcript1:31
+
 Let's go back to schematic and try something very simple. Let's find a digital component, some simple digital components, like maybe a counter.
-Play video starting at :1:44 and follow transcript1:44
+
 And a counter like that requires a clock input. So I'll go down to system, and I see Clock over here, and I'll drag a Clock out. And notice, the default frequency of the clock is 12 MHz. But like any other component in the system, we can change that. But for now, let's just use 12 MHz. I'm going to hit the W key on my keyboard, which is equivalent to touching the Wire tool there on the upper left, connect those two boxes.
-Play video starting at :2:17 and follow transcript2:17
+
 The only other input I see on this counter is a reset input, and you don't want to leave inputs unconnected. Don't do that, it's a bad practice with any logic family. And we don't want to do it here, because we're not really sure what voltage would be created on there. So we're going to deliberately hook that up to something. And if I go find digital logic, interestingly, a Logic Low is just treated like a component in the systems. So I could take a Logic Low here and just connect that up. And this time, instead the use of the W key, I'll just line up the boxes. And now we have created a Counter inside the chip, that we can interact with using the API, or Application Programming Interface, using the API that Cypress will create for us. And stick in this list of files on the left here, after we build the project. In order to build the project, we go to the upper left, and we find that icon that looks like a couple sheets of paper, with a little plus sign. And if we mouse over it, it says Generate Application. It's an unwieldly term, so I use the term Build. If I click on that, it will start to look at this schematic here and say, I see you put down a Counter. So you probably want to have some function calls related to that counter.
-Play video starting at :3:41 and follow transcript3:41
+
 And sure enough, a few seconds later, what appears on the left side of the screen underneath the main.c is something called Generated_Source. And I now have C files related to the clock, the counter, and a whole bunch of other things that are in the category called cy_boot. And those are system-wide function calls, most of which you're not interested in except for the delay function.
-Play video starting at :4:8 and follow transcript4:08
+
 But let's concentrate on this Counter_1.c file here, what's in there? If I double-click on it, notice we got a tab on the top here, in our Most Recently Used list, says Counter_1.c. And there's a whole bunch of C code in here that we didn't have to write, it was automatically generated, and really that's the point. If you scroll down through this, you'll see all sorts of things that you're glad you didn't have to write, because it takes time.
-Play video starting at :4:37 and follow transcript4:37
+
 For instance, here is a function called Counter_1_Enable.
-Play video starting at :4:42 and follow transcript4:42
+
 You won't have to use that one, but this one is very important, it's Counter_1_Start. And here's a good example of a key piece of information that is difficult to find, in all of the information that Cypress provides about this chip on your website. This is just something you have to know. All components in a chip require a Start() function, with the exception of pins, I think, and other simple components. But something like a counter, or a timer, or a dock, or an op-amp, you have to Start(). And by Start(), it's not really starting it so much as it is powering it up. In order to save power on the PSoC chip, all the components have individual power controls. And the default is off, so we're going to start this by, I'll just copy this.
-Play video starting at :5:37 and follow transcript5:37
+
 I'll go back to main.c, and right after IntEnable, won't worry about that right now, I'll put this start function in there. And in order to make it a function, I have to have a couple of parentheses and a semicolon, that's what makes it legal C.
-Play video starting at :6:1 and follow transcript6:01
+
 And I believe it's good practice to put comments in on the fly.
-Play video starting at :6:10 and follow transcript6:10
+
 So there's an example of some code that we didn't write, we didn't have to write these lines of code, we just call the function. We copied the guts of it, and we put it in main.c, and I added the parentheses, the semicolon. And so main.c starts by enabling interrupts, which we're not using right now, and then it turns this counter on. What else do we get in the counter? Well, pretty much anything you could imagine that you might want a counter to do, there will be functions to do that.
-Play video starting at :6:38 and follow transcript6:38
+
 For instance, if you were in a very low-power situation and you only needed the counter occasionally? You could power it down by using Counter_1_Stop, we won't be doing that here. There's InterruptMude, ReadStatusRegister, there's a lot of stuff in here that if you just started to read it, you would get quickly lost in a lot of minutiae. So I'm going to cut to the chase and show you the stuff that's important. I already showed you the Start function, that's a key function. WriteCounter, you could write a value and start the counter at some specific value, that's certainly a very important function. Of course, you want to be able to read the counter.
-Play video starting at :7:21 and follow transcript7:21
+
 Here, you could change the period of the counter. For instance, the counter could be an 8, 16-bit or larger counter, but that doesn't mean it has to count from the maximum value. You could, for instance, set it up to be an 8-bit counter that counts down to 100. Usually, that's done in the Configuration Menu. Here, we go back to the schematic, I right-click, Configure.
-Play video starting at :7:50 and follow transcript7:50
+
 And there, I've just created a 8-bit counter that really starts at 100.
-Play video starting at :7:58 and follow transcript7:58
+
 And this is probably a good time to mention to you that the counter, as a default, I believe, counts down. And usually you would expect a counter to count up from 0, but most of the counters, the Fixed Function counters in PSoC count down.
-Play video starting at :8:26 and follow transcript8:26
+
 Here we have some functions which are grayed-out. The main thing to remember is you have to start it, it's very easy to put a counter on the board and forget to start it.
-Play video starting at :8:38 and follow transcript8:38
+
 And the only other function that you'd really be interested in for a simple operation is just to be able to read the counter. So let's do that, I'll copy this and I'll stick it in main.c, I'll put it in the middle of this for loop.
-Play video starting at :9:3 and follow transcript9:03
+
 The counter, when you read it, it's probably coming back as a return value, and there it is, a return value of a uint8.
-Play video starting at :9:11 and follow transcript9:11
+
 So I need to have some variable to read it into, and I'll call that count_1 =. And of course, in C, you have to declare your variable. So I have to declare this, and I will do that, declare it as a uint 8, and that gets rid of the red box over here. And this is a relatively uncommon case where the PSoC Creator will immediately notify you when you make a mistake. Most mistakes, it won't tell you about until you build the project. And make sure this all works, let's just go back and re-generate it. I'll hit Generate Application, look at the output box down here, it said Build Skipped.
-Play video starting at :10:3 and follow transcript10:03
+
 That means that it just created the APIs, and looked at the APIs and schematic that we created, it did not attempt to download the code. If I clicked on this button, it would first look to see if I changed anything. If I had, it would do the Generate, or Build, then it would download. So this is this, plus a download.
-Play video starting at :10:36 and follow transcript10:36
+
 This one seemed to work just fine.
-Play video starting at :10:42 and follow transcript10:42
+
 So just to review that, we could put a counter on the board with a clock. We noticed that after we did a Generate, that we got Generated_Source code, all of this we did not write. We looked in Counter_1.c, and that's exactly the name we chose on the schematic. So we chose Counter_1, so we got counter 1.C. It created all of these function calls that we can copy and stick in the main.c, and use to manipulate the counter.
-Play video starting at :11:14 and follow transcript11:14
+
 That's how automatically generated code works, it saves you a lot of time and is very convenient.
 
 4: Adding the LCD display to the Nscope and Developent Kit
@@ -147,59 +145,59 @@ There are many ways to debug an embedded design. Most of you will probably be fa
 
 Interactive Transcript - Enable basic transcript mode by pressing the escape key
 You may navigate through the transcript using tab. To save a note for a section of text press ⌘ + S. To expand your selection you may use ⌘ + arrow key. You may contract your selection using shift + ⌘ + arrow key. For screen readers that are incompatible with using arrow keys for shortcuts, you can replace them with the H J K L keys. Some screen readers may require using ⌘ in conjunction with the alt key
-Play video starting at :: and follow transcript0:00
+
 For those of you unfamiliar with serial communication, I'll start with the basics. The rest of you may skip ahead. This lecture will cover some important aspects of serial communication, and specifically using the PSoC UART, but will not get into every detail. Emphasis will be placed on what you need to know and certain points that are either not well covered or well emphasized by other information sources. And there are, of course, a lot of other information sources out there. For full details, read the UART data sheet available within the PSoC creator software.
-Play video starting at ::45 and follow transcript0:45
+
 There are many ways to connect a microcontroller to another device, such as a sensor or a display. The simplest method is a direct parallel connection, where we connect each bit of some memory location in the microcontroller, usually called an I/O port, to a matching location on the other device. This results in a fast, reliable connection. But in a 32-bit device, it requires 32 I/O pins and wires. And anyone who has looked closely at a modern circuit board realizes that both are precious commodity. This is where serial communication comes in. Instead of moving 32 bits at once, we instead move one bit at a time using a shift register. This is, of course, much slower than a parallel interface, but it turns out that many forms of data transfer do not require super high speeds. A lot of data sources will talk about serial communication being done with a single wire, but you always have to have a ground connection between the two sources unless you're doing wireless transmission. So the minimum is really two wires.
-Play video starting at :1:59 and follow transcript1:59
+
 There are many serial communication standards in use today. Some of the most common ones are I2C, SPI, ethernet, bluetooth, which is wireless, of course, and RS-232. They differ in their exact implementation, but all use a shift register. Some of these are much faster than others. Some of them allow communication between a single point and many receivers, and others allow two-way communication between many receivers. It all depends on which standard we're talking about.
-Play video starting at :2:36 and follow transcript2:36
+
 A UART is a device designed to implement the ancient RS-232 serial data communication standard. It dates back to 1960. Not too many things in the computer field are still in use that date back to 1960. It has proved so useful that it's in common use today. Some things never change.
-Play video starting at :3:1 and follow transcript3:01
+
 The primary advantage of RS-232 is it just requires two wires in its simplest form, ground and one signal wire. This immediately presents an interesting problem. If data is shifted out on the signal wire one bit at a time, how does the receiving device know when each data bit is present? It will see only a series of high and low voltages.
-Play video starting at :3:27 and follow transcript3:27
+
 You might imagine that we could add another line that would go high when the data is stable and ready to be sampled. Typically, this is done in other communication standards, and it's called a clock line, and that is what synchronous data communication is. There's a clock that tells the receiver when the data is present, but a UART doesn't have that. It saves out extra wire, so it really can operate with just two wires. But you have to somehow figure out when the data is stable and ready to be sampled when you're receiving it.
-Play video starting at :4:4 and follow transcript4:04
+
 Both the I2C and SPI, and other types of serial data communication standards use a separate line, a clock line, that tells the receiving device when to sample the data. This is more accurate than the way the UART does it, because over time, the further and further you get from that leading edge that everything is based off of, the greater the chance is that you'll have a mismatch in where you sample the data. If you have a clock line, you don't have that problem because the clock line is constantly telling you when the next bit is occurring, usually on the rising edge of the clock. The solution lies in timing each bit from the first falling edge of data transmission. The signal wire will sit high, and when it goes low, you start to do timing. In order to do this, of course, the receiving device will have to know in advance not only the pattern of the data, but also the rate of the data transmission. It has to know how long to time until the first bit and the subsequent bits. Mismatches in the agreed rate will result in garbled data, and you might have seen this when you're trying to set up a serial communication link with your PC. You'll always see a place to define the data rate when setting up a UART.
-Play video starting at :5:28 and follow transcript5:28
+
 Here's what that looks like in a PSoC configuration window.
-Play video starting at :5:33 and follow transcript5:33
+
 In this case, notice that the data rate is set to 57600 bits per second. We'll talk about the other fields in a minute. Besides requiring an extra wire, there's another reason not to use a clock line, and that is interference between adjacent wires. Clock lines are generally very rapidly changing high frequency signals, and that's the sort of signal that couples very well in between adjacent traces. If you look closely, you can often see a little bit of clock noise on signal lines if they're close together, the UART doesn't have that problem.
-Play video starting at :6:13 and follow transcript6:13
+
 Once a UART has been placed on a PSoC schematic and properly configured, data transmission can take place simply by writing a single byte of data to it. The UART takes care of assembling the data in the right format and moving it out one byte at a time, thereby relieving the CPU from any further action. It's a hardware assist. Here's what that code looks like. It's just a single PutChar command. There are other commands in the PSoC data library which will put more than a single byte into the UART. For instance, there's a put string command that will allow you to put an entire series of ASCII characters into the UART. This doesn't mean that the UART is any faster and ultimately, underneath the hood, the data is going into the UART one byte at a time.
-Play video starting at :7:9 and follow transcript7:09
+
 The UART does more than simply shift data out one bit at a time. It also formats the data. And by this, I mean the UART is responsible for automatically adding some extra bits to the serial data string. These are the parity and stop bits. Use of a parity bit is optional. It aids in error checking. If used, it is appended to the transmitted byte, and now we're up to nine bits total.
-Play video starting at :7:41 and follow transcript7:41
+
 Use of the parity bit must be agreed upon in advance between the receiver and the transmitter. If the settings do not match, communication will not work. The polarity of the parity bit is chosen to make the total number of ones, including the parity bit, equal to either an odd or an even number. And yet, that's another setting that you have to agree on. There's something called odd parity and even parity. So first of all, you have to agree to use parity in the first place. And secondly, you have to decide whether it's odd or even. And it will be calculated on the sum of all eight data bits plus the parity bit. Here we have chosen to use even parity in the PSoC UART configuration dialog.
-Play video starting at :8:28 and follow transcript8:28
+
 Remember, the receiving UART is responsible for recalculating parity on the nine bits received and declaring an error if the calculation is not even or odd, as was agreed to in advance. Of course, if two bits have flipped, the parity check will succeed anyway, and the error will go undetected. This is a limitation of this simple error checking scheme. More advanced communication formats use more bits to define checksums which can detect, and in some cases, even correct multiple bits in error.
-Play video starting at :9:4 and follow transcript9:04
+
 The UART is also responsible for adding one or more so called stop bits to the serial data streams. These are added after the parity bit. Unlike parity, the standard requires at least one stop bit. There can be two, but no more.
-Play video starting at :9:22 and follow transcript9:22
+
 Once again, if the number of stop bits sent by the transmitter does not match the number expected by the receiver, data errors can result.
-Play video starting at :9:36 and follow transcript9:36
+
 Here is an example of a serial communication program called PuTTY, running on a Windows 10 PC. Notice the similarities to the UART configuration and PSoC creator. Similar, but not the same. Other serial communication programs will have similar setup dialogues. In some cases, the receiver will not be a PC, but the settings will still have to be defined somehow. If you haven't defined those settings, things aren't going to work.
-Play video starting at :10:8 and follow transcript10:08
+
 Serial communication is complicated by the speed mismatch between how fast the CPU can write a single byte to the UART using a PutChar command, for instance, versus how long it takes the UART to actually move that data out to a receiver. In general, the CPU is much, much faster than the UART, so care must be taken to make sure the UART is ready for new data before writing to it. If you make this mistake, you will clobber the old data. This is known as an overrun error.
-Play video starting at :10:42 and follow transcript10:42
+
 Calculating the exact time per instruction in any microprocessor can be surprisingly complex, but it is easy to measure. Here, I created a simple program to do so, using the oscilloscope, but connected to a test point. With a CY8CKIT-059, that's the little board that plugs directly into a USB port. Configured with a bus clock speed of 24 MHz, which is usually what it is. The scope shows a positive going pulse of around 1.9 microseconds. This is how long the CPU takes to put a single byte in the UART. If the UART is configured for 9600 bod, a common setting, it will need 1042 microseconds to shift out a 10-bit frame consisting of a start bit, the eight data bits and one stop bit. That's over 500 times slower the rate that the CPU could stuff data into it. So precautions must be taken not to do that. Even at the fastest data rate available in the PSoC UART configuration, the time needed by the UART to flush a single byte is 11 microseconds, and that's still much slower than the CPU can put data into the UART. PSoC creator includes a function that allows the CPU to check if the UART is ready. For instance, the Read Transmit Status command checks to see if the last byte written to the UART has been sent already. However, in many cases, we do not want to slow the fast CPU by making it wait for the slow UART. This is where the transmit buffer comes in.
-Play video starting at :12:31 and follow transcript12:31
+
 The PSoC UART can be configured to include a transmit buffer. This is not part of the old RS-232 standard and therefore technically not what a UART does, but it is a very common and useful feature. A buffer is simply a piece of memory that the CPU can write to at full speed. In the PSoC 5LP chip, the buffer hardware is only four bytes deep, although the configuration menu allows you to create a much deeper buffer using system RAM that emulates it. Of course, this requires software to do so and slows things down, but the details are taken care of by the automatically generated code.
-Play video starting at :13:15 and follow transcript13:15
+
 The PSoC UART automatically moves data through the buffer in a first in, first out fashion and transmits it without further CPU intervention. Again, it's a hardware assist. The CPU can go off and do something else while the UART takes care of these details.
-Play video starting at :13:38 and follow transcript13:38
+
 This allows the CPU to write a number of bytes at full CPU speed without waiting for each byte to be transmitted by the much slower UART. Of course, this convenience comes with some caveats. The CPU must be careful not to overfill the buffer. PSoC creator includes a special function call specifically for this purpose. You can read the size of the transmit buffer.
-Play video starting at :14:7 and follow transcript14:07
+
 But this isn't the only bottleneck in the system. Besides making sure the CPU doesn't overrun the UART, the transmitting UART must be careful not to overrun the receiving UART. This is where you'll hear the term flow control. In this case, the problem is not as extreme as the CPU to UART interface, since both UARTs must be configured to run at the same speed. Even if this is done, however, the CPU connected to the UART at the receive again might not be reading the data out of the UART as fast as it's coming in.
-Play video starting at :14:44 and follow transcript14:44
+
 The PSoC configuration menu allows for status lines to be added to the UART to signal when the data can be sent. This is what happens when you configure the UART for, quote, hardware flow control, unquote. You'll see a few pins added to the UART. Details are well covered in the UART data sheet, and it works pretty much the way you think it might. Quoting directly from the data sheet, quote, the CTS line is an input to the UART that is set by the other UART in the system when it is okay to send data on the bus. The RTS line is an output of the UART informing the other UART on the bus that is ready to receive data, unquote. So these two lines are responsible for avoiding buffer overflow between the two UARTs. That's entirely different than buffer overflow coming from the CPU going to one of the UARTs. The UART may be configured for so called full duplex operation. Here it's called full UART, but the usual term is full duplex, and that means it can transmit and receive at the same time. So there are shift registers which are duplicated such that each UART has both a transmit and receive line. Another option is so called half duplex operation. In this case, you still have a transmit and receive line, but they cannot be used at the same time.
-Play video starting at :16:17 and follow transcript16:17
+
 So what's going on when you use a UART on the PSoC development board and somehow it connects through a USB connector and ends up on a window running on your laptop? Well, there's a lot going on under the hood. The development board actually contains a second PSoC microprocessor that generally you don't write any code for. It's all hardwired, but that microprocessor takes the UART signal from your microprocessor, the one that you actually program, and translates that data into a USB compatible package. And that's how it ends up talking to your PC.
-Play video starting at :17:8 and follow transcript17:08
+
 Once again, remember that your PC will have to have a terminal emulation program. Some of the more popular ones are PuTTY and HyperTerminal. Once you run that program, you'll have to make sure that the serial port connections match exactly what the UART is doing on your PSoC board. One setting you need to pay particular attention to is the comport setting, because that can change every time you connect a PSoC development kit to your computer. The operating system decides at that time what number will be assigned to the comport. You have to look at the control panel in Windows to determine what choice it made, and then enter a matching comport number in the serial communication program you are using, such as PuTTY. Here, we selected COM1, but it could easily have been something else, and it might change the next time you disconnect and reconnect your development kit.
-Play video starting at :18:15 and follow transcript18:15
+
 So far, this lecture has covered most of what you need to know to use the PSoC UART, but time prevents me from going into every detail.
-Play video starting at :18:24 and follow transcript18:24
+
 Note that the UART data sheet is 56 pages long, so there are a lot of details. I have tried to emphasize a number of points that I think that are not well covered elsewhere, and I hope this has been useful to you.
 
 6: Debugging with GPIO and DACs
@@ -222,246 +220,244 @@ Let's talk a bit about this idea of mixed signal systems. By that, I mean any sy
 10: A Basic Sensor Interface in PSoC
 
 Sensor interfaces can take many forms. But there are a few common issues to all of them. The first is what we call excitation, that is applying power to a sensor. While that may sound trivial, it isn't. Connecting a sensor to whatever power supply is available can introduce noise that corrupts the signal that you were trying to read. It may be necessary in some cases to filter the power supply noise before using it to power a sensor.
-Play video starting at ::29 and follow transcript0:29
+
 Some sensors, thermocouples come to mind, do not require any external power as they create their own voltages. Usually such voltages are too small to be directly applied to the input of an ADC, and thus require some amount of amplification.
-Play video starting at ::46 and follow transcript0:46
+
 Like all micro controllers, PSoC runs off a single-ended power supply, which means it can only interface to voltages between ground and VDD, which is usually 5 volts for our purposes. Of course, not all sensors are limited to this range and when this occurs you'll have to use external components to clamp the applied voltages to the range that PSoC can handle.
-Play video starting at :1:11 and follow transcript1:11
+
 So how do we do this? Well, take a look at this schematic here. In this case, I've assume that we have some external voltage that might sometimes be greater than 5 volts, or in fact might be less than ground. And we want to apply that voltage to port 3, bit 2, which is an analog pin. And I've drawn a couple of Schottky diodes here, that will clamp this voltage, basically provide a low impedance path to 5 volts or from ground to limit the voltage at port 3, bit 2.
-Play video starting at :1:50 and follow transcript1:50
+
 That's a common technique, but it may get you into trouble here.
-Play video starting at :1:58 and follow transcript1:58
+
 Like any other component, the pins component has a data sheet.
-Play video starting at :2:6 and follow transcript2:06
+
 It's really a circuit, it's not just a pin, it's really a circuit. And in the data sheet, you will find electrical characteristics for those pins. These are important to look at.
-Play video starting at :2:15 and follow transcript2:15
+
 It's important to note that inside the PSoC chip, there are already Schottky protection diodes, and if you put Schottky protection diodes on the outside of the chip, well now, you have two diodes in parallel. When you have two diodes of the same type in parallel, it's not clear how the current will be shared. Most of the current could go through the external diode, or it could go through the internal diode. It depends on exactly how the diodes were created. And if we are unlucky enough that most of the current goes through the internal diode, then the external diode is not helping us at all. The internal diodes are limited to about 100 microamps and that's right here in the data sheet. If you scroll down you'll see a specification for I diode which is the current through the protection diode to VDD or Vss, and that's only 100 microamps. So if your external current source goes to 6, 7 or God forbid 200 volts, the current will flow through both of the diodes, the external one and the internal one. And you can quickly burn out the internal one because 100 microamps is not a lot of current. So what to do about this? What you do is you're going to have to add a current limiting resistor to the circuit external to the PSoC. Here's an improved circuit. This one will be safe even if that external voltage exceeds 5 volts.
-Play video starting at :3:49 and follow transcript3:49
+
 I've added a 10K current-limiting resistor between the external Schottky diodes and the PSoC pin which has it's own internal Schottky diodes.
-Play video starting at :4:2 and follow transcript4:02
+
 With this design, if Vdd is 5 volts and the Schottky diode forward voltage is less than about half a volt,
-Play video starting at :4:11 and follow transcript4:11
+
 then the voltage at this point can never be greater than 5.5 or less than minus 0.5 if this guy goes below ground.
-Play video starting at :4:22 and follow transcript4:22
+
 That means the current in this path, which needs to be limited limited to 100 microamps max, only requires a 5K resistor, but I put a 10K resistor in there just to provide some margin. So this is a safe way to protect this analog input from an external sensor, or whatever, something you want to sense that could exceed the voltage applied to the power pin of PsoC Vdd or if it can go below ground. This is the way to do it.
-Play video starting at :4:59 and follow transcript4:59
+
 There is, however, a price to be paid for this protection.
-Play video starting at :5:2 and follow transcript5:02
+
 Remember that all GPIO pins, and pretty much anything for that matter, exhibit a certain amount of capacitance. This can be as much as 20 picoFarads for some pins, again according to the PSoC 5LP family data sheet.
-Play video starting at :5:18 and follow transcript5:18
+
 Here's what that document looks like. Of course, you can find that on the Cypress website.
-Play video starting at :5:24 and follow transcript5:24
+
 And if we scroll down,you'll find this line, input capacitance, and it varies by pins. But it's on the order of single digit to tens of picoFarads. That's not really a lot. Your typical oscilloscope probe has about that much. But it makes a difference when it comes to high frequency operation, because the input capacitance of the PSoC chip, in combination with that series resistor of 10K, forms a RC low-pass filter. And that limits how fast a signal you can apply externally and still see it in PSoC.
-Play video starting at :6:3 and follow transcript6:03
+
 If you are dealing with frequencies in the audio frequency range, let's say 10 to 20 kilohertz, this is usually not a big deal. But if you get up into the hundreds of kilohertz or megahertz, then it starts to make a difference, and you can lose amplitude at the PSoC input. Once we have satisfied input voltage swing protection, and it maybe that none is, the next step in a signal chain is usually amplification. And in PSoC that means a PGA component. If the input signal is small and varies from 0 volts to perhaps 0.2 volts, a simple PGA with a gain of 25 would bring the maximum input signal up to 5 volts. But we cannot configure a PGA for any gain we want, there are limited values available.
-Play video starting at :6:52 and follow transcript6:52
+
 For instance in this case we have 1, 2, 4, 8,16 well 24 is the closest to 25, so we'll choose that. I'll hit OK and there we have a gain stage with a gain of 25. Notice that this PGA has an external reference input, and a non-inverting input.
-Play video starting at :7:15 and follow transcript7:15
+
 And if you want to use it in the simplest possible way you can reconfigure it and just say use internal VSS, not quite as accurate in some cases. I'll hit OK, and now it's a very simple device. We'll have a gain of, actually, 24. But what if the input is small, but not located near 0 volts? For instance, what if it varied from 4 to 4.2 volts?
-Play video starting at :7:47 and follow transcript7:47
+
 You might think that this prevents using any gain from the PGAs since even a gain of two results in output saturation. You'd get more than what PSoC can handle, which is between 0 and 5 volts. This won't damage the chip, but you won't get any useful information out of the sensor. What we need to do is figure out a way to ignore that 4 volt offset and amplify only the 0.2 volt signal. This can be accomplished by two different methods. You can block all the DC by simply inserting a capacitor in series with the signal, that would have to be external component, because you don't have capacitors inside PSoC. But if you put a capacitor in series of the signal you create a high-pass filter. How high depends on how large a capacitor you use, and the resistance of whatever is connected to the capacitor. This works similarly to the low-pass filter we talked about. There's always some resistance and some capacitance, and they work together to create filters whether you want them to or not.
-Play video starting at :8:54 and follow transcript8:54
+
 The second method works by essentially subtracting out the undesired offset before it can be amplified. Here's where the analog flexibility of PSoC could be put to good use. All you have to do is place a DAC on the schematic, configure it for a 4 volt output, and connect this to one input of the PGA. Let's try that.
-Play video starting at :9:18 and follow transcript9:18
+
 In this circuit, I reconfigured the PGA to leave that external voltage reference pin available. And I connected it to the DAC, which I configured to be a 4 volt output. Notice it's 0 to 4 volts, and the initial value, the value that it assumes after power up, is 4 volts. You can change that at anytime in software simply by using the API or the function call that will write to the DAC and set the value. But here, we don't need to change it, we just need to have it at 4 volts. The PGA is going to multiply the difference between these two signals. So this input here, the analog input is at 4 volts and this is at 4 volts, the output of the PGA is 0. If the input is 4.1 volts and remember this is 4 volts right there, this is 4.1 volts, well you have 0.1 volts times a gain of 24. So the output would be, what, 2.4 volts. That's well within the range of what an ADC can handle. To complete this very basic analogue input we have added this ADC over here. And I chose the successive approximation ADC, which is fast but has more limited resolution. And by fast I mean it can go to 1 million samples per second, but the maximum resolution is 12 bits.
-Play video starting at :10:54 and follow transcript10:54
+
 Besides applying gain and off et to an input signal is often useful to apply some degree of analog filtering before presenting it to an A to D converter. There are couple of reasons for this. First, the well known Shannon Nyquist sampling criteria states that frequencies exceeding half the ADC sample rate will corrupt the digital result. In practice, it's a good idea to limit the frequency content of your signal to well below that. Since no analogue filter is perfect a common rule of thumb is to limit the input frequency to just one-tenth of the ADC sample rate. So if your input signal bandwidth is one kilohertz, you must sample at at least two kilohertz, and preferably 10 kilohertz or more.
-Play video starting at :11:42 and follow transcript11:42
+
 Note, we are using the term hertz synonymously with samples per second. They're not quite the same thing but this approximation will suffice for now. Second, thermal and other types of noise are always present in electronic components. Most of these noise sources are wide band, so it pays to filter out as much of them as possible, up to the limit opposed by the bandwidth as the signal you want to pass.
-Play video starting at :12:9 and follow transcript12:09
+
 Let's consider that hypothetical 0 to 0.2 volt input we discussed earlier.
-Play video starting at :12:15 and follow transcript12:15
+
 Besides describe it in terms of amplitude, we also need to think about its bandwidth.
-Play video starting at :12:20 and follow transcript12:20
+
 Whatever that value is the bandwidth of the thermal noise is wider. And there's no point opening up the bandwidth wider than it needs to be to let the signal go through. Doing so will just let in more noise.
-Play video starting at :12:36 and follow transcript12:36
+
 The decision of whether or not to implement an analog filter depends on how much noise is present in the signal bandwidth. It may be low enough to forgo this complication. But you should have a full understanding of the consequences. Once again, if this input signal contains frequencies
-Play video starting at :12:54 and follow transcript12:54
+
 that are approaching half the sample rate of this ADC, you'll get a corrupted output, it'll be wrong.
-Play video starting at :13:8 and follow transcript13:08
+
 For many types of sensors, like temperature sensors, the rate of change is low and you can cut out any noise above a few hertz with a simple low-pass filter.
-Play video starting at :13:20 and follow transcript13:20
+
 Various topologies are available and can be implemented using the op-amps available in PSoC along with external passive components, resistors and capacitors. Online calculators are readily available that will tell you what values are needed based on desired frequency range and other factors, greatly simplifying the design.
-Play video starting at :13:40 and follow transcript13:40
+
 By the way, don't just use any capacitors. They vary greatly in tolerance, drift and even linearity. Read the data sheet.
-Play video starting at :13:51 and follow transcript13:51
+
 So let's review the basic analog signal processing option. The simplest possible thing you could do is just connect an analog input to an ADC like this.
-Play video starting at :14:2 and follow transcript14:02
+
 This will work great assuming that analog input, from whatever sensor is attached to it, always remains between 0 volts and 5 volts, and the signal bandwidth is less than half the sample rate of this ADC.
-Play video starting at :14:22 and follow transcript14:22
+
 And the noise present in the signal bandwidth is low enough so that the frequency component in the noise which exceed half the sample rate is not so large as to be a major factor.
-Play video starting at :14:39 and follow transcript14:39
+
 The next step up in complexity is to amplify the signal before it's applied to the input of the ADC. And in this case I've shown a simple single ended amplifier with a gain of 24. And that will work fine as long as your signal is a small signal and near ground. Because this is going to amplify any voltages above ground on this input. That works for a wide variety of signals but not all of them.
-Play video starting at :15:15 and follow transcript15:15
+
 This circuit will work to amplify a small signal that is no lower than 4 volts, and only goes a little bit above 4 volts. The DAC is applied to the Vref input of the gain stage, and the PGA only amplifies the difference between the plus and the minus input. So if they're both sitting at 4 volts, the output is 0. If the voltage rises a little bit above four, here, that difference will get multiplied by the gain of 24, and that will get applied to the ADC. So this circuit works for small signals that have a DC offset.
-Play video starting at :15:55 and follow transcript15:55
+
 You can also block a DC offset with an external capacitor. Remember, when you do this, always think about the parasitic resistance and capacitances in the circuit. This input will have some resistance to ground and now you have a high-pass filter formed by this C and whatever resistance exist over here. And if you're dealing with signals in the megahertz or hundreds of megahertz range that might become important.
-Play video starting at :16:28 and follow transcript16:28
+
 Only once these basic signal conditioning steps have been taken can we reliably apply the signal to one of the ADCs and PSoC. We'll talk more about that and about digital filtering in a later video.
 
 11: Thermistor Lab, Part 1
 
 Measuring temperature is one of the most common of all sensor applications. There are many ways to do it, but four most commonly used methods. These include the thermistor, the RTD, resistive temperature detector, thermocouples which you probably heard of, and semiconductor devices like diodes.
-Play video starting at ::27 and follow transcript0:27
+
 Each of these types of sensors has their own advantages and disadvantages. They vary not only in cost but also, importantly, in the range of temperatures that they can detect. Also, how linear the output is. And whether or not they require a separate excitation circuit or they generate a voltage on their own. Let's review the basic characteristics of thermistors. First of all, they're inexpensive. They can cost less than a dime. They're also highly sensitive. Much more so than many of the other sensor types.
-Play video starting at :1:2 and follow transcript1:02
+
 They work as a variable resistance, but they're non-linear and the range of temperatures over which this linear curve works is relatively limited. For instance, in the Ametherm catalog the table stops at 150 degrees C while other types of temperature sensors can go much higher.
-Play video starting at :1:22 and follow transcript1:22
+
 RTD's are also variable resistors. Typically a 100 ohm chunk of platinum. They are not very sensitive, however. The amount of resistance change per degree C is much, much lower than a thermistor which makes them harder to interface to.
-Play video starting at :1:39 and follow transcript1:39
+
 On the other hand, the output is fairly linear and if you don't need the highest degree of accuracy, you can just assume a linear curve fit.
-Play video starting at :1:47 and follow transcript1:47
+
 Prices are more expensive than thermistors. A few dollars. However, they can work over a much wider temperature range. For instance, one of the devices I see from US Sensor is rated from minus 50 degrees C all the way up to 500 degrees C. And remember, the thermistor from Ametherm stopped at 150 degrees C. Thermocouples, however, are a different animal. They are not variable resistors. They actually generate their own voltages.
-Play video starting at :2:17 and follow transcript2:17
+
 They consist of two dissimilar metals joined together, and the types of metals used determines the type of the thermocouple. The most common being the K type thermocouple. Interestingly, thermocouples always require a second temperature measuring device at the so called cold junction. However, the cold junction can be at room temperature while the other side can be very hot, like RTD's, into the many hundreds of degrees C. Four or five hundred degrees C is typical. So they operate over a very wide temperature range. But they're a little trickier to deal with in something as simple as our thermistor.
-Play video starting at :2:58 and follow transcript2:58
+
 For instance, it's quite easy to accidentally create a thermocouple on a printed circuit board, since the joining of any two dissimilar metals creates one. Usually the voltages produced by these parasitic thermocouples are small, but they can affect the accuracy of the circuit.
-Play video starting at :3:16 and follow transcript3:16
+
 Diodes and over semiconductor devices can also be used to measure temperature. There'll be a voltage that is developed when the device is properly biased, and that will vary with temperature. Almost everything varies with temperature.
-Play video starting at :3:31 and follow transcript3:31
+
 The advantage of diodes is they're easily included on an integrated circuit.
-Play video starting at :3:36 and follow transcript3:36
+
 However, they have a limited temperature range like any semiconductor device.
-Play video starting at :3:42 and follow transcript3:42
+
 We'll talk more about these four temperature measuring devices, and a few others, in later videos. But now let's get back to the business at hand. How do we interface a thermistor to a microcontroller like PSoC and do so accurately at low cost? It's an analogue interface, the voltage range is fairly large, so there's not a lot of concern about noise.
-Play video starting at :4:6 and follow transcript4:06
+
 But as simple as that sounds, there are some important considerations that may not be obvious, such as how do you get the most accurate result using parts that are not overly expensive?
-Play video starting at :4:20 and follow transcript4:20
+
 Here's an example of what that negative temperature coefficient curve looks like. At cold temperatures, the resistance is over 50,000 ohms. At hot temperatures, 90 or 100 degrees C, it's just a few hundred ohms, but it's a non-linear curve. So one of the problems we have to face in interfacing this to a microcontroller is to go from a non-linear curve to a linear output of temperature.
-Play video starting at :4:45 and follow transcript4:45
+
 The curve you just saw can be modeled by something called a Steinhart-Hart equation. It involves three constants, a, b, and c, that are usually specified in the manufacturer's data sheets. The microcontroller needs only to measure the resistance and then calculate the temperature from this equation.
-Play video starting at :5:6 and follow transcript5:06
+
 The temperature calculated by the Steinhart-Hart equation is not in degrees Farenheit, or even in degrees Celsius. It's in absolute degrees Kelvin. It's easy to use your microcontroller to add 273 to the result to get degrees Celsius from degrees Kelvin.
-Play video starting at :5:25 and follow transcript5:25
+
 A little more difficult is evaluating the non-linear equation. That's best done if you include the math and floating point libraries that come with your compiler. Here's what that looks like in the code.
-Play video starting at :5:39 and follow transcript5:39
+
 In addition, you have to go to Project Build Settings, then drill down to the Linker General tab, and look for Additional Libraries. And insert this m to the right of the phrase Additional Libraries. That is compiler dependent, and this compiler is the ARM GCC compiler. But it's a necessary step if you want to use the math and floating point libraries.
-Play video starting at :6:5 and follow transcript6:05
+
 With those preliminaries out of the way, let's try building a thermistor interface in PSoC.
-Play video starting at :6:13 and follow transcript6:13
+
 The first thing we're going to need is an analogue to digital converter. I will select the delta-sigma ADC which is the higher resolution of the two ADC's available in the PSoC chip. Let's check the default configuration.
-Play video starting at :6:31 and follow transcript6:31
+
 It's set up for 16 bits at a conversion rate of 10,000 samples per second, which is probably more than enough for a thermistor.
-Play video starting at :6:40 and follow transcript6:40
+
 Notice that the input voltage range is +/-1.024V. And since I've previously stated that PSoC lives between zero and five volts, that might be confusing. But the point to remember here is that when they say minus voltage, they're referring relative to the minus input of the delta-sigma ADC. They're not referring to ground. So a negative voltage would occur, as far as the ADC is concerned, any time this input with the minus sign is at a higher voltage than the input with a plus sign.
-Play video starting at :7:16 and follow transcript7:16
+
 Since the thermistor is not built into the P SAR chip, we're going to have to add it as an external component to the breadboard area. But we can document that fact using the PSoC schematic in the Off-Chip Component tab. Notice it has aligned here for Sensors. We expand that. Sure enough we find a thermistor. I'll left click, drag it on to the screen, rotate it.
-Play video starting at :7:46 and follow transcript7:46
+
 And take a look at the configuration. Right click > Configure. And notice the configuration is very simple and it has a default value of 25K. I'm not sure which thermistor we're going to use yet, so I'll leave that alone. But I'm going to change the name here from R_1 to Thermister to better indicate what its function is.
-Play video starting at :8:13 and follow transcript8:13
+
 In our next video we'll finish hooking up this thermistor to the ADC and write some code to display the temperature indicated by the ADC on the LCD of your devkit.
 : Added to Selection. Press [⌘ + S] to save as a note
 
 12: Thermistor Lab, Part 2
 
 So now that we have the thermister on the board, we have to use it to generate a voltage that the ADC can read. The ADC does not read resistance directly or inductance or capacitance, it only reads voltage. So somehow, we have to create a voltage with the thermister. And you might be tempted just to simply place a voltage source on the thermister and connect the other leg to ground. That will put current to the thermister, but the voltage will be exactly what the voltage you applied was. What we need to do is put it into a voltage divider circuit.
-Play video starting at ::41 and follow transcript0:41
+
 And I can easily make that by bringing in another external resistor.
-Play video starting at ::48 and follow transcript0:48
+
 Here is what that looks like. This is a simple voltage divider circuit. The 10K resistor R_1 is constant and varies very little with temperature. The thermister varies a lot with temperature. And so the voltage in between the two will change as the temperature increases or decreases. In order to connect these external components to the ADC, we're going to need to have some pins on PSoC. And these will be analog pins. It's important to note at this point that PSoC routes analog and digital signals separately. And if you want to connect an analog signal to something like an op-amp or an ATD converter, you have to use analog pins. Let's go find a couple of analog pins from the Component Catalog and assign them to a particular port and pin number using the Pins dialog. Here I've randomly selected port zero, bits zero and one and connected it through the ADC.
-Play video starting at :1:51 and follow transcript1:51
+
 Notice that I included the extra step of going to the Pins tab and making the physical connection to match the name P0_0 and P0_1. To document the connection of a physical pin on PSoC to something external, we configure the pin to have an external terminal which has a blue color and wire it up to the half-bridge. Recall that an external terminal could be added to any pin simply by clicking on this External terminal checkbox in the configuration menu for the pin.
-Play video starting at :2:28 and follow transcript2:28
+
 External terminals appear in color blue and are there merely to document the connection of internal PSoC components to external components, those that are not inside the chip.
-Play video starting at :2:44 and follow transcript2:44
+
 Here, I've chosen to do the most obvious connection I could think of. Which is to take the negative input of the ADC and connect it to ground, which is labeled Vss on this schematic, and to connect the positive input of the ADC to the other side of the thermister.
-Play video starting at :3:2 and follow transcript3:02
+
 Notice that by doing it this way, the ADC is never going to output a negative number because the input range is set up for plus or minus 1.024 volts. And since the minus terminal is at ground, the plus term was never going to get less than that and so the number read by the ADC is always going to be a positive number. So in some sense, you've lost half the resolution of your ADC, but let's not worry about that right now. In addition of that problem, this is still not the most accurate way to do the things, why?
-Play video starting at :3:36 and follow transcript3:36
+
 Because well, there are several factors. First of all, the power supply is not a reference voltage. Which means that it's designed to provide a lot of electrons but it not necessarily very steady. So if the power supply varies at all, the current through this half-bridge will vary.
-Play video starting at :3:55 and follow transcript3:55
+
 The value of R1 is also a critical factor. Typical resistor precisions are 5% or 1%, but for not very much more money, you can get a 0.1% resistor. Here's a couple I found on the Digi-Key website. Noticed that for 46 cents, if you buy 1,000, you can get a reasonably accurate 0.1% reference.
-Play video starting at :4:19 and follow transcript4:19
+
 And we can use that to determine how much current is flowing through the half-bridge. If we know the current in the half-bridge and we know the voltage across the thermister, then we know what the resistance of the thermister is. Just simply vehicles IR equation.
-Play video starting at :4:37 and follow transcript4:37
+
 But we've already used our delta-sigma ADC to measure the voltage across the thermister. How can we also measure the voltage across the 10K now precision resistor? There's only one high precision delta-sigma ADC in PSoC, but there are two SAR ADCs. And you might be tempted to use the SAR ADC to measure the voltage across a 10K resistor, but that's really a expensive resource used for a very simple purpose. A simpler method would be the use of multiplexer on the input to the ADC so we can switch between the 10k precision resistor and the thermister, and measure each at different times. That's okay to do because we don't expect the temperature to be changing very fast compared to how fast the delta-sigma ADC converter can read it.
-Play video starting at :5:33 and follow transcript5:33
+
 To do this, we'll use an analog multiplexer, which is an internal component available in the Component Catalog. Let's try that.
-Play video starting at :5:44 and follow transcript5:44
+
 If you watch this high speed video closely, you'll notice I made a few mistakes and went back and forth before I got it the way I wanted it. Fortunately, that's very easy to do in this development environment. Here's the configuration I ended up with for the AMux. Notice I'm using it in Differential mode. I placed the analog multiplexer here so that we can make a differential measurement on channel 0 of the the mux across the 10K precision resistor. And that will tell us how much current is flowing in the thermister, regardless of what the power supply voltage is doing. This does assume that the power supply voltage is not changing too rapidly. Because if it does by the time we make the measurement here, the current in the thermister at a later time might have actually changed. But let's assume for a moment that the power supply voltage is not changing too rapidly compared to how fast we can make our measurements, although that is a concern for accuracy.
-Play video starting at :6:44 and follow transcript6:44
+
 The second differential measurement will be made when we switch the analog multiplexer to channel 1, and that will be a measurement of the voltage across the thermister.
-Play video starting at :6:54 and follow transcript6:54
+
 And then by combining these two measurements, we will first determine the current through the 10K precision resistor and the thermister. Once we have the current, pi R equals V over I, we'll know what the resistance of the thermister is. Once we have the resistance of the thermister, we have to go back to that curve that shows what the temperature is versus resistance.
-Play video starting at :7:19 and follow transcript7:19
+
 There are two ways to do this. You could, for instance, digitize the table, or you could calculate it mathematically using the floating point operations. PSoC, however, makes this easy because they provide a component that allows you to do this with just a few clicks. Let's take a look at that.
-Play video starting at :7:39 and follow transcript7:39
+
 If we go over to the Component Catalog and expand the Thermal Management line, scroll down a little bit and you'll see something called the Thermistor Calculator.
-Play video starting at :7:51 and follow transcript7:51
+
 And drag this out onto the board, and it's important to note at this point that the Thermister Calculator is not a hardware component inside of PSoC. And that's a little bit out of sequence because almost everything in this Cypress Component Catalog is in fact hardware that's inside the chip. But the Thermister Calculator is somehow different, and notice it has a red color to indicate this.
-Play video starting at :8:21 and follow transcript8:21
+
 Let's take a look at the configuration for this device.
-Play video starting at :8:26 and follow transcript8:26
+
 Notice there are two suggested implementations. You can calculate the temperature by an equation, or you can use a lookup table. The tradeoff there is one of speed and how much space you want to devote to the lookup table. The lookup table takes up more space, it's fast. The equation is not quite as fast, but it doesn't take as much space in code. And since temperature is generally a very slowly changing phenomenon, let's just use the equation method. Here at the top, we have a option to change the value of the reference resistor, and notice it says 10,000, which just happens to be the value I used. By the way, the resistance shown in the configuration window is not going to be automatically matched to what's shown for the thermister on the schematic. On the right side we have a temperature and resistance pull down screens that allow you to customize the calculation of the equation to match the particular thermister that you're using.
-Play video starting at :9:31 and follow transcript9:31
+
 Remember that the thermister that came in the dev kit for this course has a nominal value 10K ohms at 25°C. So this is an alternative to finding the a, b, and c coefficients in a Steinhart-Hart equation. And it's a little bit easier, just go to the table, find some temperatures from the manufacturer and stick them in here and you're good to go.
-Play video starting at :9:58 and follow transcript9:58
+
 Here's an example of a manufacturer's data on the resistance versus temperature curve from Ametherm, which is a large manufacturer of thermisters. And that's the type that should be included in the kit that you're using for this project. This is the Ametherm Zero Power Resistance Curve that means that there's no issue of self heating. Because when you put current through a thermister, if you put too much through it, of course, it's a resistor and it will heat itself up. By the way, self heating of the thermister is a real problem. If you put too much current through a thermister, you'll make it hot and it will measure its own temperature over that of the environment. The key is to have good thermal contact between the thermister and its environment. And of course, not to use more current that is necessary to get a good reading.
-Play video starting at :10:46 and follow transcript10:46
+
 We're still not quite done with the hardware. We have to set up the input to the ADC to match the voltages that we expect from the thermister.
-Play video starting at :10:56 and follow transcript10:56
+
 At room temperature, the thermister will be 10K, and that will give us 2.5 volts at P3_1. As we get hotter than room temperature, that will drop towards zero. If we go below room temperature, it's going to go above 10K, maybe as high as 50K.
-Play video starting at :11:15 and follow transcript11:15
+
 At 50K, the resistor divider rule tells us that the voltage could be as high as 4.2 volts, and that doesn't take into account any variation in the power supply. But let's try to keep the analysis simple here. Let's assume that P3_1 could be as high as about 4.2 volts, and as low as well, close to 0. The input range of the ADC on PSoC is configurable. Let's take a look at the configuration.
-Play video starting at :11:44 and follow transcript11:44
+
 Down here under Input options, you see that there's a pull down menu for Input range, and if I pull that down, here are my options. I can have plus or minus 1.024, 2.048, and so on.
-Play video starting at :11:59 and follow transcript11:59
+
 The only one of these that goes up as high as as 4.5 volts is this one, which is plus or minus 6.144 volts. And that might be alarming because we know that the PSoC chip really only can operate between 0 and 5 and this menu option does not override that. What it means is that we're going to lose a little bit of the resolution on our ADC. But I'll select that one because it's the only one that gives me the input range that I need for the resistor values that I selected.
-Play video starting at :12:30 and follow transcript12:30
+
 This configuration of the ADC is certainly confusing because we know that PSoC can only handle voltages between 0 and 5 volts. So what are they talking about when they talk about plus 6.144 volts? What they mean is that the input is going to stop at 5 volts, so the digital output is never going to reach the maximum possible value. For a 16 bit signed number, that's a little bit over 32,000. But you're not going to get there, you'll be stuck at 25,000 or so because of this limitation.
-Play video starting at :13:6 and follow transcript13:06
+
 That's it for the hardware portion of this design. In the next video, we'll move on to software and see how we write code in C to operate this circuit.
 : Added to Selection. Press [⌘ + S] to save as a note
 
 13: Thermistor Lab, Part 3
-
-
 Here I've refined the design a little bit. Besides changing the spelling of Thermister to Thermistor and adding a title, I've put an LCD display on the schematic because I think it's good practice to always use the LCD, it really helps with Debugging. I've also added some test points here. I've added two analog test points that we can use with our end scope or whatever sort of you have to verify what the input voltages are that the ADC reads. If you get a bad number out here, it's nice to know what's really going into the ADC so you can decide whether it's the input that's at fault or it is the configuration of the ADC or perhaps the software you are using to operate it that's at fault.
-Play video starting at ::52 and follow transcript0:52
+
 Notice I have added a few other floating test points up here at the top. I call them floating test points because they do not have a hardware input. I use these to verify operation of the circuit and to see how long certain operations take. For instance, port 0, bit 0 I could use to tell me what my overall loop time is and the other output pin I can use to determine how long the LCD or an ADC conversion is taking place, or how long it takes.
-Play video starting at :1:31 and follow transcript1:31
+
 So, what about the code to operate all this?
-Play video starting at :1:34 and follow transcript1:34
+
 Well in this case I've written all my code in main.c and that's true for pretty much all the projects that we will do. We'll just try code in main.c. The rare exception to that rule is if you're using interrupts, you may write code in the interrupt routines as well. But for now we'll be straight forward about it and we'll just use main.c. If I click on that tab over here, this is what my code looks like. And I'll go through that right now, so you have some idea of how I write code and how this all interacts with the circuited hand.
-Play video starting at :2:12 and follow transcript2:12
+
 Start with, I think a title is always a good idea and a brief explanation as to what the code is doing. That's the first thing a new reader will look for in any piece of code. And you should always have it in there. It only takes a second.
-Play video starting at :2:27 and follow transcript2:27
+
 In this case I've included the math, and floated point libraries in addition to the automatically generating code which always puts in this line at line 10 which is include project.h. But you should remember from a previous video that it's not enough to just include these two lines for math and float.h who also have to go to project.
-Play video starting at :2:51 and follow transcript2:51
+
 Build Settings, go down to Linker > General and put in this m right here. If you don't put in that m, you're going to get compile errors and they're not going to be very clear about what's causing it.
-Play video starting at :3:7 and follow transcript3:07
+
 I like to declare all of my variables before the line int main.c which makes them global variables. Many people in the computer science industry would say that's bad practice, but I know that if I do this. And I use the debugger, I won't have any problem about where the debugger stops and are these variables in context or not in context. I'll always be able to click on them, see what the values are and change them as necessary.
-Play video starting at :3:36 and follow transcript3:36
+
 So let's start with main.c. Note I put a few blank lines up here to draw your eye to the beginning of the code.
-Play video starting at :3:44 and follow transcript3:44
+
 Only a little bit of this code was automatically generated. For instance CyGlobalIntEnable is automatically generated. I left it in there, I don't think it is necessary for operation of the ADC or the LCD as I'm using them. But just in case it is necessary, I've decided to leave that in, it's harmless.
-Play video starting at :4:5 and follow transcript4:05
+
 First thing I do here is, I start the delta sigma ADC, and it's a kind of a poor choice of words, I think it would have been better if they call this power up. All this does is power up that section of the chip.
-Play video starting at :4:20 and follow transcript4:20
+
 If you want to actually use the ADC, another step is necessary, we'll get to that in a minute.
-Play video starting at :4:25 and follow transcript4:25
+
 I have to do the same for the Mux and the LCD. Notice I do not have to do this for any of the pens in the device.
-Play video starting at :4:36 and follow transcript4:36
+
 On line 35 I write the words, Thermistor Test to the LCD screen. And the reason I do that is because, sometimes due to an error in your wiring or in your code, it may occur that you actually never downloaded the code that you think you have in the development kit. So I always like to confirm that by putting a title on the first line of the LCD. And I just do that for one second or so, because after that I need the LCD to do other things.
-Play video starting at :5:8 and follow transcript5:08
+
 On line 43, to draw your attention to an important part of the code, I've put a comma at line where you say start of infinite loop.
-Play video starting at :5:17 and follow transcript5:17
+
 I think it's a good idea to try and space and comment your code in such a way that the major sections of the code are readily visible to the casual observer.
-Play video starting at :5:29 and follow transcript5:29
+
 I've changed the default if param;; format that [INAUDIBLE] gives you to something I think it's a little bit more intuitive while 1.
-Play video starting at :5:41 and follow transcript5:41
+
 And I start with a loop counter on line 48. I always have a loop counter in my code because I think it's good practice to do so, so you can stop it at any time and see how many times you've gone through the loop. Sometimes the code will get stuck or it will take a lot longer than you thought. And if you look at a loop counter. And the number is oddly low or hasn't changed at all, that tells you something's up with the code, it's just for testing purposes.
-Play video starting at :6:9 and follow transcript6:09
+
 On line 49, I have LCD write counter. And I use that to only write to the LCD every so many times through the loop. And I just experiment with that number until I get a writing rate that's reasonable for the LCD. If you try to write to the LCD faster than a few hertz, you can't read it anyway and it starts to fade out at higher rates.
-Play video starting at :6:36 and follow transcript6:36
+
 Now we get to the mid of it, we're done with the preliminaries. First thing you do is you have to select the AMux to differentially look at the voltage across the 10K resistor. That's just AMux 1 Select(0). And in this case, I used the default name AMux.
-Play video starting at :6:54 and follow transcript6:54
+
 Here on line 54, I start the delta sigma ADC doing convergence. That's different than the start that I did previously which just powers it up. Think of it as powering up as turning the key on in any car and this is putting it into gear. We're going to start conversions on line 54. Line 57, we wait for the end of conversion and we'll get stuck here if the conversion doesn't come back and apparently that can happen sometimes. So that's one of the examples of why it might be wise to have a loop counter. I went and started this code and I didn't see what I wanted and I stopped it and I saw the loop counter was 1. That might tell me something is fishy.
-Play video starting at :7:38 and follow transcript7:38
+
 Down here on line 62, I'm writing to one of those floating test points. I just write it back to 0. Notice on line 51, I wrote it to 1. Just before we start doing the conversion, I write it to a 0 here so the time that that bit spends at a value of 1 tells me how long it took to start and do a conversion on the ADC. I always check those things in case there is something fishy going on that I didn't expect.
-Play video starting at :8:7 and follow transcript8:07
+
 Line 64, I just read the result, to 16 bit value and I convert it to a floating point number on line 65. So now I have the result in whatever units the ADC gives it to me in. And you can figure that out from the configuration of the ADC or you can use the API that I used on line 69, which looks at the configuration of the ADC and decides how to convert from a number to a value in milivolts.
-Play video starting at :8:40 and follow transcript8:40
+
 And I put that in R_1_mv. And then I make a floating point version of the same variable, that I'm going to use a little bit later. Now, since I have the current in R1 I can, excuse me the voltage across R1 and I'm assuming that I know that the resistance is 10,000 ohms. I can convert it to current. So line 74, I actually calculate the current. In our next video, we'll complete the software review and show you how the Nscope is used in combination with those test points to tell us something about how well the design is working.
 
 14: Thermistor Lab, Part 4
