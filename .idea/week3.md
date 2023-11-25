@@ -5,47 +5,47 @@
 2: Summary of Rotary Sensors and Applications
 
 Lets give a high level overview of different types of Rotary sensors. An incremental encoder generates a train of electrical pulses, whose frequency is proportional to angular speed. Homing applications include motor speed and rate control found in machine tools, robots, mixing equipment and textile equipment. It's called incremental because the encoder sends out a stream of pulses that are not related to an absolute standard of rotary position. Hence the incremental encoder is good for measuring speed, don't try to use it for understanding absolute position.
-Play video starting at ::39 and follow transcript0:39
+
 On the contrary, absolute encoders are routinely used for rotary position sensing. They're also found in machine tools and robots. But they get used in medical and welding equipment where precise control of position is mission critical for these applications. The rotating disk within the absolute encoder contains a very precise pattern that is used to create a multi-bit digital word at each discrete angle at each location. Therefore the absolute encoder always knows where it is during rotation and it can also keep track of total revolutions too.
-Play video starting at :1:16 and follow transcript1:16
+
 Resolvers are used in extremely harsh temperature, shock and vibration environments that go beyond the capability of encoders to maintain their signal integrity. They're commonly used in military, aerospace and construction equipment. A resolver works similarly to a DC generator. It's coils output two analog signals arrange at a phase, by 90 degrees. It then generates a voltage, corresponding to the interaction of the resulting magnetic fields.
-Play video starting at :1:52 and follow transcript1:52
+
 Unlike temperature sensors, rotary sensors are fully designed around the demands of their application. The four general categories of rotary sensors scale up in specs and cost for commercial, servo, industrial and heavy duty applications.
-Play video starting at :2:11 and follow transcript2:11
+
 Commercial grade sensors are lowest cost, used in benign environments found in office machines and medical devices. Servo devices resembled from the outside, the small stepper and servo motors who speeds their measure. Because they are usually mounted right next to these high speed motors they need a high temperature rating to handle the high amount of heat given off by the motor windings.
-Play video starting at :2:38 and follow transcript2:38
+
 Industrial grade sensors are usually melted to large motors used in typical industrial blowers, pumps, compressors, and machine tools. Heavy duty encoders are used in high vibration environments or to prevent liquid penetration in food and beverage, for marine applications. They come with IP67 or IP68, ingress protection ratings, and may also be ATEX certified, for explosion proof needs.
-Play video starting at :3:10 and follow transcript3:10
+
 Let's recap, we discussed the two types of rotary sensors in broad terms, describing the different grades of sensors for suitability in different applications. Now, we will take a deeper look at the optoelectronics technology underlying encoders.
 
 3: Optical Encoders: How They Work
 
 And now, it's time for those pesky fun facts. This time about rotary sensors. A beam of light emitted from an LED shines through a rotating glass or etched metal disc divided into transparent and opaque sectors. The light beam gets detected by a photo sensor when the disk rotates and it displays a transparent sector. In an incremental encoder, the resulting signal is transformed into a square wave, and it's sent to a counter circuit. Unfortunately, the count is subject to loss during the power interruption. So as an optional feature, incremental encoders can provide a once per revolution pulse or index mark, as it's called, at the same place in each revolution. This pulse occurs on Channel Z, a separate output from the signal channel. The output from the Z Channel tells the counter circuit to reset to zero. It supplies a mechanical reference, such as one needed when homing a robot. Encoders are defined by their resolution as opposed to their accuracy. Resolution for encoders is defined as the number of pulse outputs per resolution of the disk, PPR for short. The more pulse outputs, the higher the resolution it has. Limits to resolution are found in the width of the LED beam, the diameter of the disk, and the ability to lay down fine pitch, transparent, or opaque tracks, where the user needs to know only the speed of rotation but not the direction. A single channel output suffices. A device with only a single channel is called a tachometer. Quadrature encoders have dual Channels A and B phased 90 degrees apart. These two output signals determine the direction of rotation by protecting the leading or lagning signal in their phase relationship.
-Play video starting at :2:3 and follow transcript2:03
+
 Forward rotation is signified when the signal from Channel B leads that of Channel A and vice versa. Your PSAT chip has a dedicated circuit for Quadrature.
-Play video starting at :2:16 and follow transcript2:16
+
 When more resolution is needed, the encoder counts the leading and trailing edges of the pulse streams of Channels A and B. This doubles the number of pulses read per revolution relative to a single channel, and doubles again the number of events read relative to simply sensing the high level of a square wave. Therefore, your encoder will have four times as much resolution. Of course, the electronics and firmware gets more complicated. And every manufacturer will make you pay more for a higher resolution sensor.
-Play video starting at :2:55 and follow transcript2:55
+
 The general assembly layout of any Incremental Encoder is shown in this slide. The encoder disk, LED, and the electronics are mounted in a housing with a cover. The degree of ingress protection is determined mostly by the type of sealing and cover used. Design details on the cover, such as O-Ring grooves, or channels for rubber gaskets, are similar to those used in other instruments. The various sensors, as well as the counters and the other IC's, are soddered to a PCB.
-Play video starting at :3:29 and follow transcript3:29
+
 An absolute encoder generates digital words that represent speed, direction and actual rotational position all at once. The pulse stream requires multiple light detectors to read every track.
-Play video starting at :3:45 and follow transcript3:45
+
 On the other hand, if power is interrupted, its output will be correct whenever power is restored, and homing the sensor is not necessary.
-Play video starting at :3:55 and follow transcript3:55
+
 Let's take a look at a simplified model of two channels. In position one, light from sensor A passes through the code wheel but light from sensor B is blocked off, this forms the word one zero. In position two, light from both channels passes through the wheel, forming the word one one.
-Play video starting at :4:20 and follow transcript4:20
+
 And in position three, light from Channel A is blocked off but the light from Channel B passes through the wheel, this forms the digital word zero one. The resolution of an absolute encoder is a function of the number of bits in its digital word. Output can be in straight binary or in Gray code. For example, a 24 bit encoder has a resolution of 16 million counts per revolution. In a Single Turn Absolute Encoder, the output signal is repeated for every revolution of the encoder's shaft. There is no ability to count the total number of revolutions, a capability provided by the index marker of an incremental encoder. The encoder's shaft turns the primary gear, which then rotates the etched position gears. These gears have tracks position directly beneath the optical sensors on the PCB. The mechanical parts, the bearings, the shafts, the gears, they're designed to meet the vibration specs of the sensor. A Multi Turn Absolute Encoder counts the total number of revolutions as well as maintains knowledge of absolute rotational position. The Singleturn PCB keeps track of absolute position from the code disk beneath it. The Multiturn PCB reads pulses from the multi turn gearbox in order to record the number of revolutions.
-Play video starting at :6:1 and follow transcript6:01
+
 The last ASIC transmits the revolutions count to the single turn PCB.
-Play video starting at :6:7 and follow transcript6:07
+
 This count will be valid even in the event of a power shut down.
-Play video starting at :6:12 and follow transcript6:12
+
 Let's recap, we took a deep dive into the digital and optical electronics behind incremental and absolute encoders. Now let's review some typical field applications for encoders, as well as some tips for how to properly specify and install them.
 
 3a: Measuring Encoder Speed
 
 Encoders are almost always used to measure speed and position of a rotating device. But notice that in this slide, I'm showing you that you're actually measuring encoder period and there are three ways to do this. In the single cycle method, we measure from the rising edge to the rising edge on a single channel that gives us the period of one cycle of the encoder. This is actually the most accurate way to do it. The reason is that the duty cycle of the waveform often varies as the speed of the device increases. If you use the half cycle method shown in the middle there you can get errors due to this effect. The quarter cycle method provides the fastest update you can have four measurements per cycle of any given channel. However, that's even less accurate than the single cycle method. So it's rarely used. Remember that the duty cycle is a ratio of how long the signal is high over the entire period of the signal and that single cycle method the duty cycle can vary quite a bit. But since we are always measuring from the rising edge to the the rising edge variations of the duty cycle actually have no effect on the measurement. Quadrature is an encoder spec that refers to the spacing between the rising edge on one channel as compared to the rising edge on the next channel. Normally, you'd want this to be one quarter of a cycle or 90 degrees. However in practice this number also there is due to a number of factors and therefore making a measurement over the quarter cycle is going to result in additional error over the single cycle. It does have the advantage however of getting four measurements in the same time that the single cycle method gets you one measurement.
-Play video starting at :2:1 and follow transcript2:01
+
 All of these methods do not measure speed directly they measure period therefore, you have to use software to take the inverse of this number. Encoder speed could be measured directly simply by counting edges in the pulse train. In the image at the top, we count rising edges on the top channel only over a period of time that's defined by that red arrow. In this case, we count to four. Of course, the quantization error here is huge the speed of the motor could very 25% and would never even see it would still count just to four. You would be tempted therefore, to count every edge on both channels as I'm doing on the bottom trays here. In this case, we count up to 17 and the quantization error would be substantially less. The advantage of this method is that the number of counts is directly proportional to speed so you don't have to take an inverse in the software. The disadvantage of this method is that gate time the time defined by the red arrow has to be long enough to capture significant number of pulses. So you don't have an update of speed nearly as fast as you would if you measured period and then took an inverse. Let's recap. There's more than one way to measure an encoder speed. You can do it over one or multiple cycles. Each method has its advantages and disadvantages. They vary in the update rate, accuracy and computational complexity. What's best for your application is designers choice.
 
 4: Optical Encoders: Applications
@@ -57,89 +57,89 @@ Here are some typical applications for encoders. The most common one is to mount
 
 
 A resolver is a very specialized transformer that measures angular position with high accuracy. We can explain how a resolver works in terms of the magnetic conductance of the various windings.
-Play video starting at ::14 and follow transcript0:14
+
 The outside of a resolver looks like an electric motor, but the inside windings are that of a transformer.
-Play video starting at ::22 and follow transcript0:22
+
 A stator has three windings, a primary one and two two-phase ones. The primary winding of the stator is excited by external AC current. Electromagnetic induction induces current in the first winding of the rotor.
-Play video starting at ::40 and follow transcript0:40
+
 Because these windings are co-linear along the axis of the resolver, the same current is induced in the first winding of the rotor, regardless of the rotor's angular position. Current then flows to the second winding of the rotor. Again, by electromagnetic induction, current is induced in the secondary windings of the stator, which are fixed at right angles to each other.
-Play video starting at :1:6 and follow transcript1:06
+
 Because of the orientation of the windings, the stator produces two alternating currents that are 90 degrees out of phase with each other, varying as the sine or cosine of the rotor angle. They are also in time, varying as the AC line voltage frequency.
-Play video starting at :1:29 and follow transcript1:29
+
 The stator windings repeat their spatial wave forms every full rotation of the rotor. And now for an even trickier part.
-Play video starting at :1:40 and follow transcript1:40
+
 The resolver is an analog device. We need a way to measure and digitize the relative magnitudes of the two-phase stator voltages so that we can back out the rotor angle.
-Play video starting at :1:54 and follow transcript1:54
+
 The relative magnitude of the voltages is the sine of the rotor angle theta divided by the cosine of the rotor angle theta. This product is tension theta and the angle theta is calculated by taking the arch tangent.
-Play video starting at :2:13 and follow transcript2:13
+
 Commercially off the shelve resolver-to-digital converters like one from analog devices schematically shown on this next slide are available to do the math for you. The signals of the resolver are applied to cosine and sin multipliers with digital angle phi. The two resulting signals, v sin omega t, sin theta, cosine phi, and v sine omega t, cosine theta, sine phi are subtracted from each other by the era amplifier to give the signal v sine omega t, sine theta cosine phi, minus cosine theta, sine phi.
-Play video starting at :3: and follow transcript3:00
+
 Using the trigonometric addition formula shown in our slide, remember, trigonometry? The signal is equal to the sine omega t, sine of theta minus v.
-Play video starting at :3:14 and follow transcript3:14
+
 This error signal sine of theta minus phi is fed through the rest of the system, so that the counters digital output phi, represents the angle theta. If you want to know more, refer to the analog devices reference material in your homework reading for more details.
-Play video starting at :3:34 and follow transcript3:34
+
 And now it's time for some resolver details. First thing to remember is that the better resolvers are brushless.
-Play video starting at :3:42 and follow transcript3:42
+
 Unlike a motor however, a resolver does not have to drive a load, it's only a sensor. Hence the input voltages to the static primary winding is usually less than 26 volts AC. Industrial grade resolvers are designed around the 50 or 60 hertz AC power commonly available in factories. Resolvers for marine or aviation use are designed around 400 hertz power supplies, military grade resolvers may go as high as 12,000 hertz. And recall that resolver to digital converters run the signals on the stator secondary windings through an era amplifier. This has the advantage of cancelling out noise injected on both windings. Little more about resolvers.
-Play video starting at :4:35 and follow transcript4:35
+
 The resolver to digital converter electronics is normally not purchased with the resolver, nor is it mounted directly to it. Here's the good news, your electronics will be kept away from the harsh environment that the resolver experiences, particularly for temperature and RF interference.
-Play video starting at :4:54 and follow transcript4:54
+
 Now here's the bad news. You're normally going to have to deal with two different vendors if you're designing a system, and you need to make sure their equipment plays nice together.
-Play video starting at :5:7 and follow transcript5:07
+
 You can get higher resolution and as higher accuracy if you purchase what's called a multiple speed resolver.
-Play video starting at :5:14 and follow transcript5:14
+
 Multiple speed resolver with 2n pair of secondary windings will deliver n cycles of sine waves in one mechanical turn of the resolver.
-Play video starting at :5:26 and follow transcript5:26
+
 The resolver will then be n times as accurate. For example, if n equals 8, your stator will have 16 sets of secondary windings. It will deliver eight full signals in one mechanical turn of the rotor.
-Play video starting at :5:41 and follow transcript5:41
+
 Your resolver will then have eight times as good accuracy as that of a single speed resolver.
-Play video starting at :5:47 and follow transcript5:47
+
 And now, we highlight issues with resolvers. First warning is that multiple speed resolvers do not understand absolute position.
-Play video starting at :5:59 and follow transcript5:59
+
 With a four-x resolver for example, a nominal output of ten degrees clockwise could really represent ten, 100, 190 or 280 degrees. So if you want to also know exactly which of these four possibilities represents your absolute position, you have to mount a single speed resolver in series on the same shaft. Your cause just doubled. A resolver normally requires an external resolver to digital converter circuit. You can buy a digital resolver which has a circuit include but then you can't place the resolver in nearly as extreme temperature, or vibration environment.
-Play video starting at :6:44 and follow transcript6:44
+
 Like most instruments, resolvers have trouble outputting a zero signal. In this case, yet typically gets zero offset of ten to 40 millivolts, due to imperfections in the secondary windings.
-Play video starting at :6:59 and follow transcript6:59
+
 This slide shows the typical construction details of a resolver. This model has a mounting plate, to attach to the structure that holds the motor. There is also a round metal cover for EMI shielding.
-Play video starting at :7:14 and follow transcript7:14
+
 The resolver shaft will be coupled by a flex coupling to the motor shaft. Rugged bearings support the rotation of the shaft inside the rotor and stator windings. The small circuit board has some programmable switches for optional user settings. And the back plate holds a pin and socket plug popular in aerospace applications.
-Play video starting at :7:36 and follow transcript7:36
+
 Once in position, you can easily think that resolver is an electric motor.
-Play video starting at :7:42 and follow transcript7:42
+
 Let's recap.
-Play video starting at :7:44 and follow transcript7:44
+
 We took a deep dive into the electromagnetic theory governing resolvers and some construction details of these rotary sensors. Now let's review applications for resolvers, aswell as how to specify and integrate them into your electronics.
 
 6: Resolvers: Applications
 
 Here are some typical applications in the field for resolvers. The most common one is to mount resolver directly to the back of a motor in high temperature or vibration environments where an encoder just won't work. As discussed, you will need to find a home for the resolver to digital converter, perhaps packaged with the motor controller.
-Play video starting at ::23 and follow transcript0:23
+
 Military and aerospace applications are a sweet spot for resolvers. They perform well near the heat of a jet engine, up to 200 degrees C with shock ratings up to 50Gs and vibration ratings up to 10Gs.
-Play video starting at ::37 and follow transcript0:37
+
 By locating the sensitive resolver to digital converter in a remote EMI hardened package, you can also avoid throwing off the readings with stray RF emissions.
-Play video starting at ::48 and follow transcript0:48
+
 My favorite application for resolvers is in welding and painting robots. Here is where the high shock ratings and vibration ratings favor resolvers over encoders. Mechanical configurations for resolvers are similar to encoders. This is not surprising given that vendors for these sensors compete in the sensors market. A frameless resolver contains little more than the stator and rotor, it mounts directly to the motor shaft.
-Play video starting at :1:16 and follow transcript1:16
+
 You can have the enclosure for the resolver come with a hole in it in order to mount it directly to the motor shaft.
-Play video starting at :1:23 and follow transcript1:23
+
 Just like for the encoders, you need a strong tether to keep it from slipping off the motor shaft. You can also use a flange mount, as shown in the slide on construction details. Remember, shaft alignment could be very dicey without the properly specified flex coupling.
-Play video starting at :1:42 and follow transcript1:42
+
 Before you go online to buy a resolver, make sure you understand what the vendor specs mean.
-Play video starting at :1:50 and follow transcript1:50
+
 Accuracy, specified in arc minutes or arc seconds, is the difference between your resolver reading and the actual rotational position of the rotor.
-Play video starting at :2:1 and follow transcript2:01
+
 Manufacturers should test their products heavily in the RND phase in order to quote accuracy. As our many sources of era, these include inconsistent stator and rotor windings, lack of concentricity of windings relative to the rotor shaft, and variations in magnetic properties of the components. You need to know what the AC voltage and frequency of your electrical system supplying power to the resolver is. The transformation ratio, or TR for short, is the ratio of output to input voltage at max magnetic coupling. As per transformers, it is proportional to the ratio of the number of effective turns in the stator secondary winding, so that it turns in the rotor primary winding.
-Play video starting at :2:51 and follow transcript2:51
+
 The transformation ratio tells you the nominal output voltage of the resolver.
-Play video starting at :2:58 and follow transcript2:58
+
 You must also decide if you want a single or a multiple speed resolver based on the trade-offs we discussed earlier.
-Play video starting at :3:8 and follow transcript3:08
+
 Now that we understand the specs, let's go online and buy a resolver. Here's a resolver from Moog that I found. They call this mechanical design a pancake resolver because the package is so narrow compared to its width. The dimensions available for A, B, and C will depend on the other parameters that
-Play video starting at :3:29 and follow transcript3:29
+
 you select, multiple speeds up to N=36 are available. Make sure you read the abbreviation table in the upper right corner of the slide. Now it's time to pick your prime specs. Suppose I have a marine application with 400 hertz as my available input frequency, and I don't want to have an additional resolver for measuring absolute position. I would specify model SSH-12-D-2, I would get 7 minutes of accuracy, and I would have to supply 10 VRMS on the input. The transformation ratio of 0.434 means that my stator secondary windings would have 10 times 0.434, which equals 4.3 VRMS on the output. Now, we need to accessorize, let's shop for a resolver at a digital converter on the analog.com website. Here's a few choices I found using their selection filters. Your resolver requires 400 Hz of frequency, so you have to make sure that you match that as a minimum frequency on the converter. You don't need velocity output, so you check no there. The tracking rate refers to the maximum angular velocity of the resolver shaft. Your resolver can likely handle the different choices. So in this case, you would have to go back to your application and figure out the specs there.
-Play video starting at :4:57 and follow transcript4:57
+
 The table gives you revolutions per second, which is only 1/60th of the RPM. Once you check the application, you can pick your part number for the converter.
-Play video starting at :5:9 and follow transcript5:09
+
 Let's recap, we studied where resolvers make sense for an application and how to specify them. The encoders and resolvers we discussed in these videos cost hundreds to thousands of dollars a piece. In order to give you some hands-on experience using rotary sensors, we have specified some much lower cost sensors for you to use in the lab work described in the upcoming videos.
 
 Week 3 Online Articles #1
@@ -178,21 +178,21 @@ A variable area flow meter consists of a glass or metal float suspended in a tap
 9: Differential Pressure Flow Sensing
 
 In a differential flow meter, an orifice plate in the guts of the instrument creates a sudden pressure drop in the flow. So that the pressure downstream of the plate will be less than the pressure upstream of it. You measure both pressures and calculate the flow rate using the Bernoulli equation. Bernoulli wrote back in the 18th century that an increase in a speed of a flow would occur simultaneously with a decrease in pressure or a decrease in the fluid's potential energy. Pretty impressive, to figure that out in the 18th century, and you guys thought Bill Gates and Steve Jobs were ahead of their times.
-Play video starting at ::39 and follow transcript0:39
+
 Orifice plates are usually a discs with a bunch of holes in them. The more the disc looks like Swiss cheese, the more flow goes through the plate. You get a smaller pressure drop that way, which means of course that you're getting more flow. Usually you need to block a fair amount of the flow to get a big enough pressure drop to resolve the actual flow rate.
-Play video starting at :1: and follow transcript1:00
+
 If you keep your pipe and differential flow meter horizontal, you get zero change in potential energy due to gravity. That way the term rho gh is equal for upstream and downstream flows and it drops out of the equation. You find the velocity of the flow from the equation P sub U minus P sub D equals one-half rho V squared. Once you know the velocity, you find the flow rate by simply multiplying by the cross-sectional area of the pipe. Differential pressure meters work great when you need high accuracy at very high pressures and temperatures. Only Coriolis flow meters can do that, and they tend to be five to ten times more expensive to buy for the same range of flow rates. Also, if you need to measure a different flow range, you can swap out the orifice plate with a different one sized to the new measurement range.
-Play video starting at :1:53 and follow transcript1:53
+
 When you shop for a differential pressure meter online, you find the usual specs for accuracy, measurement range, and so forth. But you get unusually high numbers for long term stability which is attestable to the fact that there are no moving parts in the flow stream. And the electronics for decoding the flow rate are time honored and reliable. Static pressure limits on these devices top out about 250 bar. This one goes to 160 bar. That's a lot of pressure, but it's not infinite either.
-Play video starting at :2:26 and follow transcript2:26
+
 Let's recap, we discussed how a differential flow meter works and what to look for when shopping for one. Now, let's move on to vortex flow meters.
 
 10: Vortex Flow Meters
 
 Vortex flowmeters operate via the von Karman effect. Theodore von Karman worked in the 20th century, not so long ago really. He did a lot of work on rockets in the 1930s. You can Google it and read all about them. An obstacle called the bluff body is placed in the flow field, and creates a series of downstream vortices. These shed and create a cyclicle pressure further down stream. The frequency of the pressure wave is picked up by a piezo electric pressure sensor. If you want to see shedding vortices in action, go visit a fast-running stream that has a big boulder in it. Take a look at the swirling water on the sides and behind the boulder as the flow stream reconnects. Maybe they should have used the phrase boulder in a stream instead of bluff body in this technology. It might have been easier to understand how vortex meters work and it would have been super cool because here at University of Colorado, we're a Boulder. In any event, a higher frequency pressure wave corresponds to a higher flow rate. The output of the piezo electric sensor goes into processing electronics, which output a flow rate via a digital protocol.
-Play video starting at :1:17 and follow transcript1:17
+
 Vortex meters are great for measuring steam flow. There are no moving parts to corrode in the floating steam. And if you need high turndown, defined as the ratio of highest to lowest flow rates you need to measure in the application, this technology is excellent.
-Play video starting at :1:33 and follow transcript1:33
+
 When you shop for vortex flowmeter, the first thing you notice is that they specifically mention steam as a measured fluid. Gas and liquid is incredibly generic, but steam is very specific. Now, that's a big clue that this device is optimized to measure the flow of steam. You get a quote on both resolution and accuracy. Keep in mind that resolution is the smallest increment of signal change that a sensor can reliably detect. Accuracy on the other hand is defined as the error between the sensor reading and the quote true value of the reading. The spec sheet also mentions all the digital protocols that the meter uses to communicate with a process control network. The list shown in this slide is pretty standard for the entire flow industry. So let's recap. We discussed how a vortex flowmeter works, and what to look for when shopping for one. Now, let's move on to ultrasonic flowmeters.
 
 11: Ultrasonic Flow Meters
@@ -208,21 +208,21 @@ Turbine flow meters have a rotor with multiple fan blades installed in a pipe wh
 In a thermal mass flow meter, about 1% of the main flow is diverted by a bypass mechanism to the flow sensor tube. The bypass usually takes the form of a metal screen with many holes in it, not much different in principle than an orifice plate discussed earlier. The bypass, along with the laminar flow element, causes the flow to go from turbulent to laminar, which is needed for a good flow measurement. The sensor tube has upstream and downstream heating coils wrapped around its exterior, equal and constant currents flow through both coils. The gas heats up as it flows through the sensor tube so that downstream temperature T2 is greater than upstream temperature T1. The heater coils are also resistors, whose electrical resistance increases as they heat up. This means that resistance, RHT2, of the downstream coil will be greater than resistance of RHT1 of the upstream coil. Now, we can use the principles of the RTD thermal sensor. Not this time, no. You can't tell me you forgot how RTD thermal sensors work. It was only two hours of video time ago. Look, normally, I'm used to students in my face-to-face classes telling me they forgot everything they learned over the summer, or maybe over winter break. But I can't accept that this time, it's been only two hours. Okay, I'll tell you what. If you've really forgotten how the RTD thermal sensors work, rewind this video all the way back to module one and watch the RTD thermal sensor story again, then come back to this section of the video, keep watching. Now, where was I? Okay, here we go. Let's use a Wheatstone bridge circuit to detect the difference in resistances. The differential voltage in the circuit is proportional to the flow rate. We calibrate the system to determine the proportionality constants. Thermal mass flow meters give highly accurate readings of clean gases at very low flow rates. They're limited in use, so roughly 30 to 50 liters per minute, and generally speaking, are only used for gases, not liquids. They are popular in the semiconductor industry for dispensing minute doses of processed gases, and they're also found in biotechnology reactors. The specs sheet for a thermal mass flow meter shows typical specs for process and gas operating temperature, which is very limited. That's because of very high processed gas temperature would grossly throw off the sensitive calibration done for the thermal mass flow sensor. The flow ranges are limited because you must have laminar flow in the meter for the thermal mass flow sensor to work. It's even attitude-sensitive in that if you unmount it sideways or upside down, you allow the minute gravitational pull on the gas flowing through the sensor to affect the reading. This shows up as an error in the reading that you have no way to account for. So, you're best off mounting it in your processed gas pipe in the way it is shown in the picture. Let the pipe be horizontal, in other words, parallel to the ground. Let's recap. We've discussed how a thermal mass flow meter works and what to look for when shopping for one. Now, let's move on to Coriolis flow meters.
 
 100% of the flow in a Coriolis Flow Meter is diverted from the main pipe into the flow tube, which is very different from how the thermal mass flow meter works. The inlet temperature is measured by an RTD which is useful in calibrating the instrument. A flow tube is mechanically excited in a direction into the page by a magnetic coil. The frequency of the electromagnetic oscillations transitions to the frequency of vibration in the tube. You know the Coriolis flow meter's working when you hear a loud buzzing sound coming from somewhere deep inside it.
-Play video starting at ::36 and follow transcript0:36
+
 The Coriolis effect of the vibrating tube interacting with the dynamic force of the flow causes the tube to twist at the frequency of the drive coil. The optical pickup measures the twist angle, which is proportional to the mass flow rate.
-Play video starting at ::53 and follow transcript0:53
+
 Coriolis flow meters directly measure mass flow, not volume flow. There are also non-contact sensors which is allow them to measure mass flow at very high process temperatures and pressures. They use to measure the very high mass flow rates found in high volume chemical petrochemical and municipal water plants. They all come with explosion proof ratings because they're commonly used to measure mass flow of volatile chemicals like gasoline.
-Play video starting at :1:22 and follow transcript1:22
+
 When you shop online for a Coriolis Flow Meter, pay attention to a few notable specs. In the middle at the top, you will see that the metal tube comes in various exotic metals, stainless steel, 3/16 being the standard and hastelloy or other high nickle content stainless steels being optional, but of course at a high price.
-Play video starting at :1:44 and follow transcript1:44
+
 This allows the Coriolis Flow Meter to measure the flow of highly corrosive liquids and gasses, such as hydrochloric acid, without eroding away.
-Play video starting at :1:54 and follow transcript1:54
+
 In the middle, you see that the flow meter is certified for explosion proof protection. It should be certified for various Atech divisions and zones. Which certify the types of explosive vapors presence surrounding the meter. At the bottom, the accuracy spec mentions something called zero point stability. What's that, you say. Well, it's a fudge factor that manufacturers place in the spec that allows them to advertise a very high accuracy, but quietly have it be worse than you'd think. You have to go hunting deep into the spec sheet to find the zero point stability numbers and it's possible that the spec sheet will not explain what this means. Zero point stability is how badly the electronics of the flow meter oscillate around a zero reading, rather than just call zero, zero. You add it to the numerical accuracy spec quota to get the real accuracy of the Coriolis flow meter.
-Play video starting at :2:56 and follow transcript2:56
+
 Zero point stability is a measure of how much voltage noise the meter has in its hardware. We'll cover the subject of voltage noise later in our course.
-Play video starting at :3:7 and follow transcript3:07
+
 This slide gives the minimum to maximum flow ranges that different models of this particular Coriolis flow meter can measure. You usually find that dozen or so model numbers suspend the entire flow range. Manufacturers need to do this to be able to quote such accuracy stats like 0.1% or 0.2% of measured flow. If they try to have a one size fits all flow meter, they would have to quote an accuracy spec ten times worse, and that's due to the effect that the zero point stability spec.
-Play video starting at :3:41 and follow transcript3:41
+
 Let's recap. We described how Coriolis flow meters work, which concludes our videos on flow meters. I hope you enjoyed the discussion.
 
 Week 3 Online Articles #2
