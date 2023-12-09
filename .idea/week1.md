@@ -30,27 +30,27 @@ Most things we want to measure, for example, temperature or pressure, are contin
 
 
 Hi there. It's me J again. Let's discuss thermal sensors. Hey you you're falling asleep in my class? Don't fall asleep in my class. Nobody falls asleep in my class.
-Play video starting at ::15 and follow transcript0:15
+
 There's four major types of thermal sensors, of which all but infrared sensors are commonly used in embedded systems. A thermal couple consists of two wires of dissimilar metals joined at the heated end road junction and connected to circuitry at the other end. The voltage read by the circuitry is proportional to the temperature at the heated junction. Thermal couples can measure temperatures up to 1800°C. As such, they are very popular for metal and semiconductor fabrication. A resistance temperature detector or RTD for short, works under the simple principle that the resistance of metal increases as the temperature increases. And for platon, the most common metal used in RTDs, the relationship is nearly linear. Rtds can measure temperature up to 800°C. There are more precise and more stable than thermal couples. And as such they popular in the pharmaceutical and biotechnology industries, where processes must pass strict audits for accuracy and repeatability.
-Play video starting at :1:34 and follow transcript1:34
+
 A thermistor is made of centered semiconductor or metal oxide particles. NTC thermistors exhibit a large decrease in electrical resistance for a relatively small increase in temperature. And even with the severe nonlinear charity, they are very accurate. Their small package size makes them ideal for measuring temperature in phones and computers.
-Play video starting at :2:6 and follow transcript2:06
+
 An infrared sensor is the only non contact temperature sensor. As such it's excellent for measuring very high temperatures safely from afar. They are commonly used to measure temperatures in hostile environments. For example, firefighters use them to know if flames are burning behind a wall in a burning building. An infrared sensor calculates the surface temperature of an object from that objects emitted infrared energy.
-Play video starting at :2:42 and follow transcript2:42
+
 Infrared sensors are normally packaged inside a handheld thermometer and not integrated directly into embedded systems. For that reason, we won't be exploring these sensors in depth in this course. The technology used in thermal sensors determines its suitability for applications.
-Play video starting at :3:8 and follow transcript3:08
+
 Each of the four types of thermal sensors has its limiting aspects. Thermal couples have the highest measurement range of any thermal sensors. If you need to measure temperatures at 1800°C, you have no choice but to use them. However, there are also subject to drifting over time as their metallurgy properties change with large numbers of thermal cycles. They need to be recalibrated yearly.
-Play video starting at :3:45 and follow transcript3:45
+
 So if you have an application that doesn't need to measure such extreme temperatures, you might want to choose RTDs or thermistors.
-Play video starting at :3:58 and follow transcript3:58
+
 RTDs have excellent accuracy and linearity. They're stable over many years and there's new need for annual re calibrations. However, you need to provide an accurate current source for RTDs. You can measure temperatures only up to 800°C and you also need to use either a three or 4 wires reach RTD circuit in order to null out the effects of lead length on the resistance measurement. And more about that detail when we get to the videos about RTDs.
-Play video starting at :4:37 and follow transcript4:37
+
 So if you're embedded system can't handle those details and you really don't need such high accuracy, try another way to measure temperature.
-Play video starting at :4:49 and follow transcript4:49
+
 Thermistors have similar attributes to RTDs, they're accurate, they're stable and they're really easy to package but they have messier limitations. They measure only up to 200°C and their high degree of nonlinear charity requires a boatload of programming in your embedded system to handle. So if you don't have extreme space limitations and you're not into firmware, RTDs might actually be better for you.
-Play video starting at :5:23 and follow transcript5:23
+
 Infrared sensors can accurately measure extremely high surface temperatures of objects, but they have issues too. You need to know the emissivity of the surface accurately to get an accurate surface temperature. And when you point that infrared thermometer at that surface, you need to know that the surface you want to measure is fully contained within the field of view of the infrared lens. And that's not an obvious thing to determine if you're very far from an object.
-Play video starting at :6:2 and follow transcript6:02
+
 Furthermore, what if you want to measure the temperature inside an object? That rules out infrared sensors completely. Let's recap, we discuss the four major types of thermal sensors describing their attributes, their limitations and reasons to select one over another in applications. In the next video, we'll take a deeper look at the technical specifications of thermistors.
 
 5: Thermistors: Basic Facts
@@ -64,45 +64,45 @@ Now, it's time for a theory lesson on Thermistors. Shown here in this graph is t
 7: RTDs: Basic Facts
 
 Okay, show of hands, how many people know that RTD stands for resistance temperature detector?
-Play video starting at ::9 and follow transcript0:09
+
 I don't see too many.
-Play video starting at ::11 and follow transcript0:11
+
 You should know it because I did use it in a previous video. Well, you know it now, RTD, resistance temperature detector. The first RTDs consisted of coils of platinum wire wound around a ceramic core or a glass tube.
-Play video starting at ::29 and follow transcript0:29
+
 And in order to protect the wires from damage, a glass, ceramic, or a metal sheath would cover these fragile linings.
-Play video starting at ::38 and follow transcript0:38
+
 Today, thin film RTDs are made by depositing thin, parallel layers of platinum onto a ceramic substrate. The length of the pattern determines the exact resistance that is needed for the sensor. Ever notice how many fun facts involve a lot of numbers? No difference with RTDs. They typical temperature range is -200 degrees C to 800 degrees C.
-Play video starting at :1:11 and follow transcript1:11
+
 The European standard, DIN or IEC 60751, specifies a resistence of 100 ohms at 0 degrees C and a temperature coefficient of resistance of 0.00385 ohms per ohm degree C between 0 and 100 degrees C. Now, memorize that.
-Play video starting at :1:36 and follow transcript1:36
+
 Okay, relax. All it really means is you're supposed to get a perfectly straight line for your plot of temperature versus resistance.
-Play video starting at :1:49 and follow transcript1:49
+
 There are two types of specs for tolerances, Class A and Class B, both of which involve the equations shown in the slide, that depend on temperature.
-Play video starting at :2:1 and follow transcript2:01
+
 It's a lot easier to remember them as Class A is the one with the 0.06 ohms of tolerance at 0 degrees C. And class B has double that, or 0.12 ohms of tolerance at 0 degrees C.
-Play video starting at :2:19 and follow transcript2:19
+
 This chart looks more like a schematic for a roller coaster ride than a graph of sensor resistance versus temperature. We discussed the NTC thermistor in the last video. The lessused PTC, or positive temperature coefficient thermistor, is the one with a positive but a curved slope upwards.
-Play video starting at :2:42 and follow transcript2:42
+
 The RTD looks like a plain old straight line with a positive slope. In reality, though, the curve is very linear but not perfectly linear. You need to calibrate an RTD sensor if you want it to be perfectly linear. RTDs get used wherever a high-accuracy temperature measurement is needed, as long as the data is somewhere within the range of -200 degrees C to plus 800 degrees C. They're popular in applications where people want to install the sensor, take the data, and not have to, or in the case of the space shuttle, not be able to access the sensor ever again.
-Play video starting at :3:34 and follow transcript3:34
+
 The excellent repeatability of RTDs appeals to the pharmaceutical industry.
-Play video starting at :3:41 and follow transcript3:41
+
 Measuring temperature in a gas or an air stream is another popular application. In that case, you will want the bare RTD element exposed to the gas in order to minimize the speed of response of the sensor.
-Play video starting at :3:56 and follow transcript3:56
+
 A hot wire anemometer is an RTD run in reverse.
-Play video starting at :4:2 and follow transcript4:02
+
 And now it's time to show you what commercial RTDs look like. You can buy them as a surface mount 0603 chip, just like this RTD from Vishay. And you can buy them as a sensor on a surface probe, and bolt them to the object whose temperature you want to measure.
-Play video starting at :4:25 and follow transcript4:25
+
 This stainless steel probe is designed to screw into a thread hole in a tank or a furnace. And the pharmaceutical industry likes the sanitary sensors. They look like an explosion-proof head, but they're combined with the clean construction required for good manufacturing procedures.
-Play video starting at :4:46 and follow transcript4:46
+
 Let's recap.
-Play video starting at :4:47 and follow transcript4:47
+
 We discussed the accuracy, range, and typical applications for RTDs. Now we're going to use circuit diagrams to explain the core technology behind them, as well as how to linearize them, how to buy them, and how to integrate RTDs into a circuit.
 
 8: RTDs: How They Work
 
 This theory lesson on RTDs will involve lots of circuit diagrams. Sorry about them. Shown on the right side of this slide is a simple circuit for measuring resistance but there's a flaw in this circuit that dooms it to a grizzly failure. You need a lead wire to attach the RTD to imbedded circuit and that lead wire has a resistance that's not accounted for in the specs. Oops, let's do the math. The RTD sensor has a 100 ohm resistance at zero degrees C. The slope of the calibration curve is 0.385 ohms per degree C. Typical lead wire resistance is somewhere between one and 10 ohms. Will be conservatives, will just use one ohm. The problem is that even adding one ohm to the circuit resistance throws off your temperature reading. Simply divide the one ohm by the slope of 0.385 ohms per degree C, and you just added a fictional 2.6 degrees C to your temperature reading. One in doubt? Construct a Wheatstone bridge. Let's try it here. Shown in the upper right corner of the slide is our first attempt. The three fixed resistors in the bridge have a much smaller TCR or thermal coefficient of resistance than the platinum RTD but still not zero. Unfortunately, putting them next to the RTD means that the resistors will see this same up and down temperature excursion as the RTD, and so there was no longer be fixed resistors. I got it. Now, let's add long lengths of wiring to the three fixed resistors and mount them remotely at a stable temperature. But now we are going around in circles. By adding lead length, we have recreated the problem we had in the last slide. Stay tuned vokes. When in doubt, stick to your Wheatstone bridge but use only three wires. Let's try it here. Shown in the right side of the slide is our next attempt. Makes sure that lead wires A and B are of equal length, and the same type of metallurgy. Because wires A and B are on opposite sides of the Wheatstone bridge, their resistances cancel. Lead wires C is dead ended so it carries no current. But now we just lost our linear relationship between temperature and resistance. Stay tuned. When in doubt, keep grinding through the calculations. Let's try it here. Shown in the top of the slide is our Wheatstone bridge with resistance values assigned. We set R_1 equals R_2 so that they conveniently dropped out of the calculations. Also, if the RTD element is located some distance from the bridge in a three wire configuration, the equal and fixed lead wire resistances R_a and R_b will be buried inside the total resistance R for the RTD and R_3 respectfully. Let's keep it simple at first and assume these resistances are very small and assumed zero. By applying the equation for the voltages in a Wheatstone bridge to our situation, we get that V_0 equals V times R_3 over R_3 plus R minus V over 2. Then we can solve for R. The resistance of RRTD as R equals R_3 times 1 over v_0 over v plus a half minus 1.
-Play video starting at :4:17 and follow transcript4:17
+
 Almost done but not quite. When in doubt, assume resistances are zero but go back and add them in at the end. Shown in the top of the slide is our trusty Wheatstone bridge, but this time with equal but non-zero values for R_a and R_b. Now, we substitute the sum of R plus R_a for R and R_3 plus R_a for R_3. We get a clean equation this time for R. Now R equals R_3 plus R_a times 1 over v naught over v plus 1.5 minus 1 minus R_a. We seem done, right? Not quite. We're only done if R_a is known and constant for all installations. In real instrument panels, technicians use all lead wire length whatever is needed to get the system wired. So your perfect calculation of R will be thrown off slightly, and if you need the best accuracy and RTD system has to offer, you should purchase a four wire RTD. Calculations in this case are left to the reader. Sorry. When in doubt, assume linearity. But in reality, RTDs are not perfectly linear. Here's a plot of temperature error for assumed linearity versus temperature for the full temperature range of the RTD. You have negative errors below roughly 200 degrees C and positive error is above that reading. We need a way to straighten out the mess so to speak. When in doubt, postulate a set of polynomial curves. Here's some real life polynomial curves that can straightened out the mess. In order to linearize the RTD, we have to calibrate it to a fixed and more accurate temperature source at several points along the curve. For temperatures below zero degrees C, we use this third order polynomial and we must calibrate the RTD at three points to obtain values for the constants A, B and C. For temperatures above zero degrees C, we use this second-order polynomial and we must calibrate the RTD at two points to obtain values for the constants A and B. Now that we've put all our doubts to arrest, it's time to go shopping online for an RTD. This is the vishay IEC we showed briefly in the previous video. It needs the specs of IEC 60751, and it gets to 90 percent of its final temperature reading within two seconds if you put it in the air stream it is measuring. Of course, I'm not sure how you do that when the chips going to be mounted on a board. So hence in reality, I'm sure that chip is going to be slower than what's shown in the spec sheet. Let's select the PTS 0603 chip we showed before. It has a resistance of a 100 ohms at zero degrees C. The TRC or the temperature coefficient is 0.385 ohms per degree C shown here in the spec sheet as 3,850 parts per million per degrees K. It has a temperature operating range of minus 55C-155C. It's narrower than max for an RTD but it's still more enough for the board where I'll mount the chip. Note also, the tiny amount of long-term drift quantified under the long-term drip stability. Oh, wait a minute. What does other IECs doing with their resistances other than a 100 ohm? Here's PTS 0805 coming in with a 100 ohms and 500 ohms of resistance, and PTS 1206 comes in with a 1,000 ohms resistance. I thought you said that then IEC 60751 specifies a resistance of exactly a 100 ohms. Yeah, but here's that deal. Who says that all sensor manufacturers follow one standard? In the sensor industry, people also sell 500 ohms and 1000 ohms RTDs. Recall our assumption four slides back that the lead wire resistance in at three wire RTD had to be small enough that they wouldn't affect accuracy too much. Well, if you jack up the nominal RTD resistance from a 100 ohms to 500 ohms, or even 1,000 ohms, your lead wire resistances are comparatively even smaller. Therefore, your system accuracy for an RTD with three wires and either 500 ohms 1,000 ohms improves accordingly relative to this system with a 100 ohms. Let's recap. We discussed the core technology and the calibration equations that govern RTDs. Now, let's discuss the accuracy range and typical applications for thermocouples.
 
 9: Thermocouples: Basic Facts
@@ -118,57 +118,57 @@ Alloy pairs are given letters of the English alphabet types J, K, T and so on. I
 10: Thermocouples: How They Work
 
 The feedback I got was that you guys said you love those circuit diagrams for our TD's. Okay, well, here's some more for thermocouples. Let's start by trying to measure the thermoelectric voltage of a tight T thermocouple. Should be simple, right?
-Play video starting at ::20 and follow transcript0:20
+
 We would like to read V1, the thermoelectric voltage produced by heating junction, J1. The intersection of a stretch of a copper and constant wire.
-Play video starting at ::31 and follow transcript0:31
+
 We connected the copper and constants, and leads to the copper thermals of our voltmeter and, oops, we created another junction of dissimilar metals where the constant and lead meets the copper terminal at junction J2. So what, you say? Well, here's what. You just introduced a back-EMF thermoelectric voltage to V1 on the Constantan wire, and you can no longer correctly read V1.
-Play video starting at :1:7 and follow transcript1:07
+
 No, you say. You have reintroduced doubt, just when we thought all the doubts were cleared up with the RTDs.
-Play video starting at :1:18 and follow transcript1:18
+
 I'll take care of you. Let's add a copper lead wire at junction J2 in the picture. This way at least we'll have standard copper to copper connections at the voltmeter. To calculate a thermal electric voltage V1 at junction J1, we must first know the temperature at junction J2. Now, 50 years ago people really did this by putting the leads of dissimilar metals at junction J2 in a bucket of ice water. This forced the temperature at J2 to exactly 0 degrees C. And the term ice point reference was born.
-Play video starting at :2:1 and follow transcript2:01
+
 You can assume quasi linearity of the thermal couple curve, and select the local slope b, by Kirchhoff's Law, yeah, that guy. The voltage V at the volt meter is equal to V1-V2. Let's use the linear approximation technique we mentioned early, and switch to zero degrees to 273 degrees K.
-Play video starting at :2:28 and follow transcript2:28
+
 V equals little b times the temperate at junction 1, plus 273 degrees K, minus the temperature at junction 2, plus 273 degrees C. And doing this subtraction, you would get V=b x temperature at junction one. So 50 years ago, people would read the voltage at the voltmeter, divide by little b, the local slope of the thermoelectric curve. They get an estimate for temperature. But we're in the 21st century and it's no longer 50 years ago. And yeah, lugging around ice baths, that's a real drag and they're really heavy, too. Sorry, doubt is back again. Well, here's another circuit diagram for you. This one will work for any time of thermocouple and not just type t, which has that one copper lead. We'll illustrate it using a type k thermocouple.
-Play video starting at :3:31 and follow transcript3:31
+
 Let's insert an isothermal metal block into the system, isothermal meaning constant temperature. This block creates a junction of dissimilar metals. Junction J3, where the copper wire meets the chromel wire, and I've abbreviated chromel with the CH.
-Play video starting at :3:52 and follow transcript3:52
+
 Let's substitute a iso-thermal metal block at junction J2 with the ice bath that we had before.
-Play video starting at :4: and follow transcript4:00
+
 In addition, we'll string some chromel wire in between these two isothermal blocks.
-Play video starting at :4:8 and follow transcript4:08
+
 This gives us two more junctions of dissimilar metals, junction J4, where copper wire meets chromel wire and junction J2 where chromel wire meets alumel wire. Abbreviated with the letters AL.
-Play video starting at :4:26 and follow transcript4:26
+
 J3 and J4 are sitting together on an isothermal block. These two copper-to-chrome L junctions introduce equal and opposite thermoelectric voltages into the loop.
-Play video starting at :4:44 and follow transcript4:44
+
 And that means they cancel out.
-Play video starting at :4:47 and follow transcript4:47
+
 So now the voltage V is given by V1 minus V2, which is equal to little b times T1 minus T2.
-Play video starting at :4:58 and follow transcript4:58
+
 Of course, now we got one equation and two unknowns, which we can't solve, but we'll deal with that in the next slide.
-Play video starting at :5:9 and follow transcript5:09
+
 This is the part where we combine the two isothermal blocks into one big one.
-Play video starting at :5:15 and follow transcript5:15
+
 Have you ever heard of the empirically derived law of intermediate metals?
-Play video starting at :5:22 and follow transcript5:22
+
 I didn't think so. Well, guess what? Before I started thermal couples, I never heard of it either. But anyway, this law of intermediate metal says that when you insert a third metal between the two other dissimilar metals at an isothermal block, that your thermoelectric block won't change.
-Play video starting at :5:42 and follow transcript5:42
+
 So let's apply this to our big isothermal block.
-Play video starting at :5:47 and follow transcript5:47
+
 What this means is we can ignore the chromel connector wire between junctions J2 and J4, and the system will function the same as if that alumel wire on the right was connected directly to the copper wire.
-Play video starting at :6:5 and follow transcript6:05
+
 Note that the equation V equal to V1 minus V2 still applies, as we haven't introduced any new thermoelectric voltages. This slide shows our simplified system. Now, we are going to perform a process step known as a cold junction compensation, or CJC for short. We originally substituted our isothermal block of unknown temperature for the ice bath which had a known temperature of 0 degrees C. Now, we need a way to measure the block temperature without using a thermocouple. We could use either a thermistor or an RTD to do this. We prefer a thermistor because it can be packaged into a small space. And our isothermal block will always have a temperature within the thermistor range. We then take the measured block temperature and find its equivalent thermoelectric voltage for a type K thermocouple. This is voltage V2. Next up, we use our voltmeter to measure V. We then calculate V1 = V + V2. Now that we know V1, we use our thermocouple look up tables to finally get T1, our goal all along. Cold junction compensation is implemented in every process instrument with thermocouple input. Here's one real world example of how this is done. The GRAPHTEC model 840 data logger has a terminal block at the top. Users connect thermocouple wiring from external thermocouple probes to this block.
-Play video starting at :7:48 and follow transcript7:48
+
 The terminal block implements the isothermal terminal block shown in the previous slide. The temperature, T2, of the block roughly corresponds to the ambient temperature where the data logger is located. But a thermistor inside that terminal block measures the exact block temperature. Let's find the thermocouple probe online.
-Play video starting at :8:14 and follow transcript8:14
+
 This straight probe from Automation Direct has a pipe log on it for screwing it directly into the wall of a furnace or an oven. You can buy it as a type J or K calibration with a quarter-inch that's 6.3 millimeter outer metal sheet, made of either 316 stainless steel or Inconel. Both of those sheet materials do stand up very well to the corrosive environment of a furnace. The magnesium oxide internal insulation in the probe protects the tiny thermocouple wires from damage during the extreme and cooling cycles that the probe undergoes. The ungrounded junction means that the thermocouple wires are not electrically connected to the probe sheath. American standards testing material spec 230, that's ASTM spec 230 governs the accuracy of thermocouple sensors, which is nominally 0.7% of reading, but at least 2.2 degrees C. This means, that at temperatures lower than 293 degrees C, you will always have an error in your reading up to 2.2 degrees C. And above 293 degrees C, your arrow will be up to that 0.75% of whatever temperature you're actually measuring.
-Play video starting at :9:43 and follow transcript9:43
+
 If you need to fit the probe into a tight location, you can bend it at a right angle without damaging those internal wires. But you need to make sure that you supply at least the half inch bend radius, that's a 12 millimeter bend radius. The spec mentions a minimum installation depth of 3 inches which is 76 millimeters. This means that you must have the probe inserted at least three inches, or the 76 millimeters into the furnace, or oven in order to get an accurate reading. Otherwise, the thermal mass of the probe outside of the furnace will be enough to conduct away the internal heat within the probe tip, which gives you an incorrectly low reading.
-Play video starting at :10:35 and follow transcript10:35
+
 You select the part number to order based on the mechanical specs you need.
-Play video starting at :10:40 and follow transcript10:40
+
 The probe comes in three standard lengths. Type J probe can only measure up to 720 degrees C. This is a little lower than the 760 degree C shown on the ITS90 spec. Some manufacturers will quote a lower maximum temperature for thermocouple if they think they can't hold the full accuracy spec throughout the range. The Type K probe will work reliably up to the upper range of its calibration In this case, 1,249 degrees C, but only if you specify the inconel material with a probe sheath. The 316 stainless steel prove sheath would corrode at this temperature and ruin the thermocouple inside. Let's recap.
-Play video starting at :11:30 and follow transcript11:30
+
 We discussed the principle of cold junction compensation and how to specify thermocouples for use in your embedded circuit. And that wraps up this week's module on thermo sensors.
 
 Week 1 Online Articles

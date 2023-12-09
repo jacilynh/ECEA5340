@@ -23,3 +23,5 @@ I purchased:
 - PRT-11367 / 1568-1357-ND / HOOK-UP WIRE ASSORT SOLID 22AWG
 - 922318 / 922318-ND / BREADBOARD ASSEMBLY 7.75X6.25"
 - 923351-I / 923351-ND / JUMPER WIRE KIT VARIOUS 22AWG
+- resistor kit: contains 1000pcs resistors with variety values. 25 different values: 1Ω，2.2Ω, 3.3Ω,4.7Ω, 10Ω, 22Ω, 47Ω, 68Ω, 100Ω, 120Ω, 150Ω, 220Ω, 330Ω, 470Ω, 1KΩ, 2KΩ, 2.2KΩ, 4.7KΩ,5.6KΩ, 7.5KΩ,10KΩ, 22KΩ, 47KΩ, 100KΩ,1MΩ, to fulfill your variety requirement, Upgrade version resistors with ±1% tolerance range, 1/2w film and thicker metal pins to have a better connection and stable performance features 
+- SainSmart DS212 Pocket Size Portable Handheld Mini Digital Storage Oscilloscope
